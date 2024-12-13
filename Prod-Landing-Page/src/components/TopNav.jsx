@@ -1,48 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 
-const TopNav = () => {
+const TopNav = ({ config }) => {
+  const [savedConfig, setSavedConfig] = useState(config);
+
+  // Load the config from localStorage on initial mount
+  useEffect(() => {
+    const savedConfig = JSON.parse(localStorage.getItem("config"));
+    if (savedConfig) {
+      setSavedConfig(savedConfig);
+    }
+  }, []);
+
+  const { logo, useCases, cta } = savedConfig;
+
   return (
-    <div className="w-full bg-white shadow-md">
+    <div className="w-full bg-white ">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Left Logo */}
+        {/* Logo */}
         <div className="flex items-center">
-          <img
-            src="/logo.png" // Replace with your logo path
-            alt="Logo"
-            className="h-8 w-auto"
-          />
+          <img src={logo} alt="Logo" className="  w-auto h-20" />
         </div>
 
-        {/* Right Navigation Links and CTA */}
+        {/* Navigation Links */}
         <div className="flex items-center space-x-6">
-          {/* Navigation Links */}
-          <nav className="hidden md:flex space-x-4">
-            <a
-              href="#usecase1"
-              className="text-gray-600 hover:text-gray-900 font-medium"
-            >
-              Use Case 1
-            </a>
-            <a
-              href="#usecase2"
-              className="text-gray-600 hover:text-gray-900 font-medium"
-            >
-              Use Case 2
-            </a>
-            <a
-              href="#usecase3"
-              className="text-gray-600 hover:text-gray-900 font-medium"
-            >
-              Use Case 3
-            </a>
+          <nav className="hidden md:flex space-x-9">
+            {useCases.map((useCase, index) => (
+              <a
+                key={index}
+                href={`#usecase${index + 1}`}
+                className="text-gray-600 hover:text-gray-900 font-medium text-sm"
+              >
+                {useCase}
+              </a>
+            ))}
           </nav>
 
           {/* CTA Button */}
           <a
-            href="#cta"
-            className=" text-black px-4 py-2 rounded-md shadow transition"
+            href={cta.link}
+            className=" text-black px-4 py-2 rounded-3xl shadow hover:bg-black hover:text-white transition border border-black "
           >
-            Get Started
+            {cta.text}
           </a>
         </div>
       </div>
