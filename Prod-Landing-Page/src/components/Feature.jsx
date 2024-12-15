@@ -2,7 +2,7 @@ import React from "react";
 
 const Feature = ({ featureConfig }) => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 max-w-screen-xl">
       {/* Heading */}
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold">
@@ -25,7 +25,7 @@ const Feature = ({ featureConfig }) => {
             <img
               src={feature.image}
               alt={feature.title}
-              className="w-full h-96 rounded-lg"
+              className="w-full h-auto rounded-lg"
             />
           </div>
 

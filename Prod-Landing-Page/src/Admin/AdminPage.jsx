@@ -34,6 +34,50 @@ const AdminPage = () => {
           <h3 className="text-lg font-medium">Feature</h3>
           <p className="text-sm text-gray-600">Configure the feature section.</p>
         </div>
+
+         {/* kpi Card */}
+         <div
+          className="bg-gray-100 border rounded-md shadow-md p-4 cursor-pointer hover:shadow-lg"
+          onClick={() => navigate("/admin/kpi")}
+        >
+          <h3 className="text-lg font-medium">KPI</h3>
+          <p className="text-sm text-gray-600">Configure the KPI section.</p>
+        </div>
+
+        {/* video Card */}
+        <div
+          className="bg-gray-100 border rounded-md shadow-md p-4 cursor-pointer hover:shadow-lg"
+          onClick={() => navigate("/admin/video")}
+        >
+          <h3 className="text-lg font-medium">video</h3>
+          <p className="text-sm text-gray-600">Configure the video section.</p>
+        </div>
+
+        {/* trust Card */}
+        <div
+          className="bg-gray-100 border rounded-md shadow-md p-4 cursor-pointer hover:shadow-lg"
+          onClick={() => navigate("/admin/trust")}
+        >
+          <h3 className="text-lg font-medium">trust</h3>
+          <p className="text-sm text-gray-600">Configure the trust section.</p>
+        </div>
+
+         {/* article Card */}
+         <div
+          className="bg-gray-100 border rounded-md shadow-md p-4 cursor-pointer hover:shadow-lg"
+          onClick={() => navigate("/admin/article")}
+        >
+          <h3 className="text-lg font-medium">article</h3>
+          <p className="text-sm text-gray-600">Configure the article section.</p>
+        </div>
+         {/* footer Card */}
+         <div
+          className="bg-gray-100 border rounded-md shadow-md p-4 cursor-pointer hover:shadow-lg"
+          onClick={() => navigate("/admin/footer")}
+        >
+          <h3 className="text-lg font-medium">footer</h3>
+          <p className="text-sm text-gray-600">Configure the footer section.</p>
+        </div>
       </div>
     </div>
   );
