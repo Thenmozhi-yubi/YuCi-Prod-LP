@@ -7,7 +7,7 @@ const config = {
   heroConfig: {
     title: "Welcome to Our Website",
     subtitle: "We provide amazing solutions to help your business grow.",
-    bgImage: "https://i.pinimg.com/originals/7c/1d/ab/7c1dab157f34e603487b5d0b057da448.gif",
+    bgImage: "https://i.pinimg.com/originals/e3/1b/75/e31b752875679b64fce009922f9f0dda.gif",
     buttonText: "Get Started",
   },
   featureConfig: {
@@ -63,20 +63,20 @@ const config = {
   },
   articlesConfig: [
     {
-      title: "Article 1",
-      content: "This is the content for Article 1.",
+      title: "improve the job search experience",
+      content: "The first platform for borrowers to choose from 750+ lenders and get the deal of their choice, quickly and 100% digitally. Get a wide variety of debt products, right from corporate loans and working capital to corporate bond issuances and vendor finance.",
       image: "https://website2021-live-e3e78fbbd3cc41f2847799-7c49c59.divio-media.com/filer_public/73/52/7352020b-b331-47f5-8405-3d114bf0f28a/types-of-meetings.png",
       buttonText: "Read More"
     },
     {
-      title: "Article 2",
-      content: "This is the content for Article 2.",
+      title: "improve the job search experience",
+      content: "The first platform for borrowers to choose from 750+ lenders and get the deal of their choice, quickly and 100% digitally. Get a wide variety of debt products, right from corporate loans and working capital to corporate bond issuances and vendor finance.",
       image: "https://website2021-live-e3e78fbbd3cc41f2847799-7c49c59.divio-media.com/filer_public/73/52/7352020b-b331-47f5-8405-3d114bf0f28a/types-of-meetings.png",
       buttonText: "Learn More"
     },
     {
-      title: "Article 3",
-      content: "This is the content for Article 3.",
+      title: "improve the job search experience",
+      content: "The first platform for borrowers to choose from 750+ lenders and get the deal of their choice, quickly and 100% digitally. Get a wide variety of debt products, right from corporate loans and working capital to corporate bond issuances and vendor finance.",
       image: "https://website2021-live-e3e78fbbd3cc41f2847799-7c49c59.divio-media.com/filer_public/73/52/7352020b-b331-47f5-8405-3d114bf0f28a/types-of-meetings.png0",
       buttonText: "Discover"
     }
