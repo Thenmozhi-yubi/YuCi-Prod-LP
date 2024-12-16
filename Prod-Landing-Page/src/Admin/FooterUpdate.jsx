@@ -1,84 +1,205 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 const FooterUpdate = ({ footerConfig, setFooterConfig }) => {
-  const [image, setImage] = useState(footerConfig.logo || "");
-  const [content, setContent] = useState(footerConfig.content || "");
-  const [button1, setButton1] = useState(footerConfig.buttons[0].text || "");
-  const [button2, setButton2] = useState(footerConfig.buttons[1].text || "");
-  const [socialImages, setSocialImages] = useState(footerConfig.socialImages || ["", ""]);
+  const [config, setConfig] = useState(footerConfig || {
+    logo: '',
+    content: '',
+    socialImages: [],
+    buttons: [], // Buttons array
+    products: { title: '', links: [] },
+    company: { title: '', links: [] },
+    resources: { title: '', links: [] },
+    security: { title: '', links: [] },
+    help: { title: '', links: [] },
+  });
 
-  const handleSaveChanges = () => {
-    const updatedFooterConfig = {
-      logo: image,
-      content: content,
-      buttons: [
-        { text: button1, link: "#" }, // link to be updated based on application logic
-        { text: button2, link: "#" },  // link to be updated based on application logic
-      ],
-      socialImages: socialImages,
-    };
-    setFooterConfig(updatedFooterConfig);
-  };
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setImage(footerConfig.logo);
-    setContent(footerConfig.content);
-    setButton1(footerConfig.buttons[0].text);
-    setButton2(footerConfig.buttons[1].text);
-    setSocialImages(footerConfig.socialImages);
-  }, [footerConfig]);
+    localStorage.setItem('footerConfig', JSON.stringify(config));
+    setFooterConfig(config);
+  }, [config, setFooterConfig]);
+
+  const handleInputChange = (field, value) => {
+    setConfig({ ...config, [field]: value });
+  };
+
+  const handleSectionChange = (sectionName, field, value) => {
+    setConfig({
+      ...config,
+      [sectionName]: { ...config[sectionName], [field]: value },
+    });
+  };
+
+  const handleLinkChange = (sectionName, index, field, value) => {
+    const updatedLinks = [...config[sectionName].links];
+    updatedLinks[index][field] = value;
+    setConfig({
+      ...config,
+      [sectionName]: { ...config[sectionName], links: updatedLinks },
+    });
+  };
+
+  const handleButtonChange = (index, field, value) => {
+    const updatedButtons = [...config.buttons];
+    updatedButtons[index][field] = value;
+    setConfig({ ...config, buttons: updatedButtons });
+  };
+
+  const addButton = () => {
+    const updatedButtons = [...config.buttons, { text: '', link: '' }];
+    setConfig({ ...config, buttons: updatedButtons });
+  };
+
+  const removeButton = (index) => {
+    const updatedButtons = config.buttons.filter((_, i) => i !== index);
+    setConfig({ ...config, buttons: updatedButtons });
+  };
+
+  const addLink = (sectionName) => {
+    const updatedLinks = [...config[sectionName].links, { text: '', url: '' }];
+    setConfig({
+      ...config,
+      [sectionName]: { ...config[sectionName], links: updatedLinks },
+    });
+  };
+
+  const removeLink = (sectionName, index) => {
+    const updatedLinks = config[sectionName].links.filter((_, i) => i !== index);
+    setConfig({
+      ...config,
+      [sectionName]: { ...config[sectionName], links: updatedLinks },
+    });
+  };
+
+  const saveChanges = () => {
+    navigate('/'); // Redirect to home page
+  };
+
+  const renderSectionEditor = (sectionName, sectionTitle) => (
+    <div className="mb-6 border-b pb-4">
+      <h3 className="text-lg font-semibold mb-2">{sectionTitle}</h3>
+      <input
+        type="text"
+        placeholder="Section Title"
+        value={config[sectionName].title}
+        onChange={(e) => handleSectionChange(sectionName, 'title', e.target.value)}
+        className="w-full border p-2 rounded mb-2"
+      />
+      {config[sectionName].links.map((link, index) => (
+        <div key={index} className="flex space-x-2 mb-2">
+          <input
+            type="text"
+            placeholder="Link Text"
+            value={link.text}
+            onChange={(e) => handleLinkChange(sectionName, index, 'text', e.target.value)}
+            className="w-1/2 border p-2 rounded"
+          />
+          <input
+            type="text"
+            placeholder="Link URL"
+            value={link.url}
+            onChange={(e) => handleLinkChange(sectionName, index, 'url', e.target.value)}
+            className="w-1/2 border p-2 rounded"
+          />
+          <button
+            onClick={() => removeLink(sectionName, index)}
+            className="text-red-500 text-sm"
+          >
+            Remove
+          </button>
+        </div>
+      ))}
+      <button
+        onClick={() => addLink(sectionName)}
+        className="text-blue-500 text-sm"
+      >
+        + Add Link
+      </button>
+    </div>
+  );
 
   return (
-    <div className="footer-update-container">
-      <div className="footer-logo">
-        <label>Logo Image URL:</label>
-        <input
-          type="text"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        />
-      </div>
+    <div className="grid grid-cols-12 gap-6 p-6">
+      {/* Editing Panel */}
+      <div className="col-span-12 md:col-span-4">
+        <h1 className="text-xl font-bold mb-4">Edit Footer</h1>
 
-      <div className="footer-content">
-        <label>Footer Content:</label>
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-      </div>
-
-      <div className="footer-buttons">
-        <label>Button 1 Text:</label>
-        <input
-          type="text"
-          value={button1}
-          onChange={(e) => setButton1(e.target.value)}
-        />
-        <label>Button 2 Text:</label>
-        <input
-          type="text"
-          value={button2}
-          onChange={(e) => setButton2(e.target.value)}
-        />
-      </div>
-
-      <div className="footer-social-images">
-        <label>Social Media Images (URL):</label>
-        {socialImages.map((img, index) => (
+        <div className="mb-4">
+          <label className="block font-semibold mb-1">Logo URL</label>
           <input
-            key={index}
             type="text"
-            value={img}
-            onChange={(e) => {
-              const updatedImages = [...socialImages];
-              updatedImages[index] = e.target.value;
-              setSocialImages(updatedImages);
-            }}
+            value={config.logo || ''}
+            onChange={(e) => handleInputChange('logo', e.target.value)}
+            className="w-full border p-2 rounded"
           />
-        ))}
+        </div>
+
+        <div className="mb-4">
+          <label className="block font-semibold mb-1">Footer Content</label>
+          <textarea
+            value={config.content || ''}
+            onChange={(e) => handleInputChange('content', e.target.value)}
+            className="w-full border p-2 rounded"
+          ></textarea>
+        </div>
+
+        {/* Buttons Editor */}
+        <div className="mb-6 border-b pb-4">
+          <h3 className="text-lg font-semibold mb-2">Buttons</h3>
+          {config.buttons.map((button, index) => (
+            <div key={index} className="flex space-x-2 mb-2">
+              <input
+                type="text"
+                placeholder="Button Text"
+                value={button.text}
+                onChange={(e) => handleButtonChange(index, 'text', e.target.value)}
+                className="w-1/2 border p-2 rounded"
+              />
+              <input
+                type="text"
+                placeholder="Button Link"
+                value={button.link}
+                onChange={(e) => handleButtonChange(index, 'link', e.target.value)}
+                className="w-1/2 border p-2 rounded"
+              />
+              <button
+                onClick={() => removeButton(index)}
+                className="text-red-500 text-sm"
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <button
+            onClick={addButton}
+            className="text-blue-500 text-sm"
+          >
+            + Add Button
+          </button>
+        </div>
+
+        {renderSectionEditor('products', 'Products')}
+        {renderSectionEditor('company', 'Company')}
+        {renderSectionEditor('resources', 'Resources')}
+        {renderSectionEditor('security', 'Security')}
+        {renderSectionEditor('help', 'Help')}
+
+        <button
+          onClick={saveChanges}
+          className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mt-4"
+        >
+          Save Changes
+        </button>
       </div>
 
-      <button onClick={handleSaveChanges}>Save Changes</button>
+      {/* Preview Panel */}
+      <div className="col-span-12 md:col-span-8">
+        <h2 className="text-lg font-bold mb-4">Footer Preview</h2>
+        <Footer footerConfig={config} />
+      </div>
     </div>
   );
 };

@@ -111,9 +111,9 @@ const HeroUpdate = ({ heroConfig, setHeroConfig }) => {
             <label className="block text-gray-700 font-medium mb-2">Quick Select Color:</label>
             <div className="flex gap-4">
               <button
-                onClick={() => setButtonBgColor("#fd7149")}
+                onClick={() => setButtonBgColor("#1e2737")}
                 className="w-10 h-10 rounded-md"
-                style={{ backgroundColor: "#fd7149" }}
+                style={{ backgroundColor: "#1e2737" }}
                 aria-label="Preset Button Background Color"
               />
               <button

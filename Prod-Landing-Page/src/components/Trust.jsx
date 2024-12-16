@@ -33,7 +33,7 @@ const Trust = ({ trustConfig }) => {
         className="overflow-hidden relative"
         style={{
           width: "100%",
-          maxWidth: "800px", // Adjust container width
+          maxWidth: "1200px", // Increased container width
         }}
       >
         <motion.div

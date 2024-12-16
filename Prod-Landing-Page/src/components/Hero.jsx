@@ -43,26 +43,51 @@ const Hero = ({
               whileTap={{
                 scale: 0.95,
               }}
-              className="relative px-6 py-3 text-xs sm:text-sm lg:text-base rounded-md text-white bg-button hover:bg-button-hover active:bg-button-active disabled:bg-button-disabled"
-              disabled={false} // Toggle this for disabled state
+              className="relative px-6 py-2 text-xs sm:text-sm lg:text-base rounded-md text-white bg-secondary "
+              disabled={false}
             >
-              <span className="relative z-10 flex items-center gap-2">
-                {storedHeroConfig?.buttonText || buttonText}
-                <FaArrowRight />
-              </span>
-              {/* Wave Effect */}
+              {/* Button Content */}
               <motion.div
-                className="absolute inset-0"
+                className="relative flex items-center justify-center"
                 style={{
-                  background: `radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 60%, transparent 100%)`,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px", // Initial gap between arrow and text
+                  // overflow: "hidden",
                 }}
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "100%" }}
-                transition={{
-                  duration: 1.5,
-                  ease: "easeInOut",
+                whileHover={{
+                  gap: "30px", // Adjust gap for both arrow and text on hover
+                  transition: { duration: 0.5, ease: "easeInOut" },
                 }}
-              ></motion.div>
+              >
+                {/* Arrow and Text */}
+                <motion.div
+                  className="flex items-center gap-2" // This groups the text and arrow together
+                  initial={{ x: 0 }}
+                  whileHover={{
+                    x: 100, // Moves arrow and text together to the right
+                    transition: { duration: 0.5, ease: "easeInOut" },
+                  }}
+                >
+                  {/* Arrow */}
+                  <motion.span
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 90 }} // Arrow moves right on hover
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                  >
+                    <FaArrowRight className="bg-primary p-2 text-white rounded-full text-3xl" />
+                  </motion.span>
+
+                  {/* Text */}
+                  <motion.span
+                    initial={{ x: 0 }}
+                    whileHover={{ x: -130 }} // Text moves left on hover
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                  >
+                    {storedHeroConfig?.buttonText || buttonText}
+                  </motion.span>
+                </motion.div>
+              </motion.div>
             </motion.button>
           </div>
 

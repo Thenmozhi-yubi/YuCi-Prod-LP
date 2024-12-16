@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import TopNav from "../components/TopNav"; // Import the TopNav component for live preview
 
 const NavUpdate = ({ setConfig }) => {
   const [logo, setLogo] = useState("");
@@ -58,77 +59,91 @@ const NavUpdate = ({ setConfig }) => {
     setUseCases(updatedUseCases);
   };
 
+  // Create a single object for navConfig
+  const navConfig = { logo, useCases, cta: { text: ctaText, link: ctaLink } };
+
   return (
     <div className="container mx-auto px-4 py-6">
-      <h2 className="text-2xl font-bold mb-4">Configure TopNav</h2>
+      <div className="grid grid-cols-12 gap-6">
+        {/* Left Column (Edit Options) */}
+        <div className="col-span-4">
+          <h2 className="text-2xl font-bold mb-4">Configure TopNav</h2>
 
-      {/* Logo Input */}
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">Logo URL:</label>
-        <input
-          type="text"
-          value={logo}
-          onChange={(e) => setLogo(e.target.value)}
-          className="w-full px-4 py-2 border rounded-md"
-        />
-      </div>
-
-      {/* Use Cases */}
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">Use Cases:</label>
-        {useCases.map((useCase, index) => (
-          <div key={index} className="flex space-x-4 mb-2">
+          {/* Logo Input */}
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">Logo URL:</label>
             <input
               type="text"
-              value={useCase}
-              onChange={(e) => handleUseCaseChange(index, e.target.value)}
+              value={logo}
+              onChange={(e) => setLogo(e.target.value)}
               className="w-full px-4 py-2 border rounded-md"
-              placeholder={`Use Case ${index + 1}`}
             />
+          </div>
+
+          {/* Use Cases */}
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">Use Cases:</label>
+            {useCases.map((useCase, index) => (
+              <div key={index} className="flex space-x-4 mb-2">
+                <input
+                  type="text"
+                  value={useCase}
+                  onChange={(e) => handleUseCaseChange(index, e.target.value)}
+                  className="w-full px-4 py-2 border rounded-md"
+                  placeholder={`Use Case ${index + 1}`}
+                />
+                <button
+                  onClick={() => handleRemoveUseCase(index)}
+                  className="text-red-600"
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
             <button
-              onClick={() => handleRemoveUseCase(index)}
-              className="text-red-600"
+              onClick={handleAddUseCase}
+              className="bg-green-600 text-white px-4 py-2 rounded-md mt-2"
             >
-              Remove
+              Add Use Case
             </button>
           </div>
-        ))}
-        <button
-          onClick={handleAddUseCase}
-          className="bg-green-600 text-white px-4 py-2 rounded-md mt-2"
-        >
-          Add Use Case
-        </button>
-      </div>
 
-      {/* CTA Button */}
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">CTA Text:</label>
-        <input
-          type="text"
-          value={ctaText}
-          onChange={(e) => setCtaText(e.target.value)}
-          className="w-full px-4 py-2 border rounded-md"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-medium mb-2">CTA Link:</label>
-        <input
-          type="text"
-          value={ctaLink}
-          onChange={(e) => setCtaLink(e.target.value)}
-          className="w-full px-4 py-2 border rounded-md"
-        />
-      </div>
+          {/* CTA Button */}
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">CTA Text:</label>
+            <input
+              type="text"
+              value={ctaText}
+              onChange={(e) => setCtaText(e.target.value)}
+              className="w-full px-4 py-2 border rounded-md"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-medium mb-2">CTA Link:</label>
+            <input
+              type="text"
+              value={ctaLink}
+              onChange={(e) => setCtaLink(e.target.value)}
+              className="w-full px-4 py-2 border rounded-md"
+            />
+          </div>
 
-      {/* Save Button */}
-      <button
-        onClick={handleSave}
-        disabled={!hasChanges} // Disable the button if no changes were made
-        className={`bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition ${!hasChanges ? "opacity-50 cursor-not-allowed" : ""}`}
-      >
-        Save Changes
-      </button>
+          {/* Save Button */}
+          <button
+            onClick={handleSave}
+            disabled={!hasChanges} // Disable the button if no changes were made
+            className={`bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition ${!hasChanges ? "opacity-50 cursor-not-allowed" : ""}`}
+          >
+            Save Changes
+          </button>
+        </div>
+
+        {/* Right Column (Preview) */}
+        <div className="col-span-8">
+          <h2 className="text-2xl font-bold mb-4">Preview TopNav</h2>
+          <TopNav config={navConfig} />
+        </div>
+      </div>
     </div>
   );
 };

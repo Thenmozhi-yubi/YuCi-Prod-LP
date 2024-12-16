@@ -15,7 +15,7 @@ const TopNav = ({ config }) => {
   const { logo, useCases, cta } = savedConfig;
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-white ">
       <div className="container max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center flex-shrink-0">

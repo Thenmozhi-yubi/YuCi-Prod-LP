@@ -11,7 +11,7 @@ import TrustUpdate from "./Admin/TrustUpdate";
 import ArticlesUpdate from "./Admin/ArticlesUpdate";
 import FooterUpdate from "./Admin/FooterUpdate";
 import configData from "./config";
-import Footer from "./components/Footer";
+import CtaUpdate from "./Admin/CtaUpdate";
 
 function App() {
   const [navConfig, setNavConfig] = useState(configData.navConfig);
@@ -34,6 +34,10 @@ function App() {
   const [footerConfig, setFooterConfig] = useState(
     JSON.parse(localStorage.getItem("footerConfig")) || configData.footerConfig
   );
+
+  const [ctaConfig, setCtaConfig] = useState(
+    JSON.parse(localStorage.getItem("ctaConfig")) || configData.ctaConfig
+  )
 
   useEffect(() => {
     localStorage.setItem("heroConfig", JSON.stringify(heroConfig));
@@ -58,6 +62,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem("footerConfig", JSON.stringify(footerConfig));
   }, [footerConfig]);
+ 
+  useEffect(() => {
+    localStorage.setItem("ctaConfig", JSON.stringify(ctaConfig));
+  }, [ctaConfig]);
 
   return (
     <Router>
@@ -73,6 +81,8 @@ function App() {
               videoConfig={videoConfig}
               trustConfig={trustConfig}
               articles={articles}
+              footerConfig={footerConfig}
+              ctaConfig={ctaConfig}
             />
           }
         />
@@ -123,6 +133,10 @@ function App() {
         <Route
           path="/admin/footer"
           element={<FooterUpdate footerConfig={footerConfig} setFooterConfig={setFooterConfig} />}
+        />
+         <Route
+          path="/admin/cta"
+          element={<CtaUpdate ctaConfig={ctaConfig} setCtaConfig={setCtaConfig} />}
         />
       </Routes>
     </Router>

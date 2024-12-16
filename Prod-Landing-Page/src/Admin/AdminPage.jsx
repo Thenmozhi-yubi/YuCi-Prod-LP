@@ -78,6 +78,15 @@ const AdminPage = () => {
           <h3 className="text-lg font-medium">footer</h3>
           <p className="text-sm text-gray-600">Configure the footer section.</p>
         </div>
+
+         {/* cta Card */}
+         <div
+          className="bg-gray-100 border rounded-md shadow-md p-4 cursor-pointer hover:shadow-lg"
+          onClick={() => navigate("/admin/cta")}
+        >
+          <h3 className="text-lg font-medium">cta</h3>
+          <p className="text-sm text-gray-600">Configure the cta section.</p>
+        </div>
       </div>
     </div>
   );
