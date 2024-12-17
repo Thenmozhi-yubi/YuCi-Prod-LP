@@ -3,15 +3,17 @@ import { motion } from "framer-motion";
 
 const Feature = ({ featureConfig }) => {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-screen-xl">
+    <div className="container mx-auto px-4 py-8 max-w-screen-xl ">
       {/* Heading */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold">
-          {featureConfig.heading.title}{" "}
-          <span className="text-blue-500">{featureConfig.heading.subtitle}</span>
-        </h1>
-        <p className="text-gray-600 mt-2">{featureConfig.heading.description}</p>
-      </div>
+      <div className="flex justify-center items-center mb-8">
+  <div className="text-center max-w-3xl">
+    <h1 className="text-4xl font-bold text-heading  ">
+      {featureConfig.heading.title}{" "}
+      <span className="text-primary ">{featureConfig.heading.subtitle}</span>
+    </h1>
+    <p className="text-content mt-10">{featureConfig.heading.description}</p>
+  </div>
+</div>
 
       {/* Feature Sections */}
       {featureConfig.features.map((feature, index) => (
@@ -25,6 +27,7 @@ const Feature = ({ featureConfig }) => {
           <motion.div
             initial={{ x: feature.isImageLeft ? -250 : 250, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
+            whileInView={{ x: 0, opacity: 1 }}
             transition={{
               duration: 2, // Slow down the animation to 2 seconds
               type: "spring",
@@ -44,6 +47,7 @@ const Feature = ({ featureConfig }) => {
           <motion.div
             initial={{ x: feature.isImageLeft ? -250 : 250, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
+            whileInView={{ x: 0, opacity: 1 }}
             transition={{
               duration: 2, // Slow down the animation to 2 seconds
               type: "spring",

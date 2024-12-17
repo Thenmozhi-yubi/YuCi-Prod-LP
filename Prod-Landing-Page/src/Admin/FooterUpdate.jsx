@@ -7,13 +7,14 @@ const FooterUpdate = ({ footerConfig, setFooterConfig }) => {
     logo: '',
     content: '',
     socialImages: [],
-    buttons: [], // Buttons array
+    buttons: [],
     products: { title: '', links: [] },
     company: { title: '', links: [] },
     resources: { title: '', links: [] },
     security: { title: '', links: [] },
     help: { title: '', links: [] },
   });
+  
 
   const navigate = useNavigate();
 
@@ -78,48 +79,66 @@ const FooterUpdate = ({ footerConfig, setFooterConfig }) => {
     navigate('/'); // Redirect to home page
   };
 
-  const renderSectionEditor = (sectionName, sectionTitle) => (
-    <div className="mb-6 border-b pb-4">
-      <h3 className="text-lg font-semibold mb-2">{sectionTitle}</h3>
-      <input
-        type="text"
-        placeholder="Section Title"
-        value={config[sectionName].title}
-        onChange={(e) => handleSectionChange(sectionName, 'title', e.target.value)}
-        className="w-full border p-2 rounded mb-2"
-      />
-      {config[sectionName].links.map((link, index) => (
-        <div key={index} className="flex space-x-2 mb-2">
-          <input
-            type="text"
-            placeholder="Link Text"
-            value={link.text}
-            onChange={(e) => handleLinkChange(sectionName, index, 'text', e.target.value)}
-            className="w-1/2 border p-2 rounded"
-          />
-          <input
-            type="text"
-            placeholder="Link URL"
-            value={link.url}
-            onChange={(e) => handleLinkChange(sectionName, index, 'url', e.target.value)}
-            className="w-1/2 border p-2 rounded"
-          />
-          <button
-            onClick={() => removeLink(sectionName, index)}
-            className="text-red-500 text-sm"
-          >
-            Remove
-          </button>
-        </div>
-      ))}
-      <button
-        onClick={() => addLink(sectionName)}
-        className="text-blue-500 text-sm"
-      >
-        + Add Link
-      </button>
-    </div>
-  );
+  const renderSectionEditor = (sectionName, sectionTitle) => {
+    if (!config[sectionName]) {
+      setConfig({
+        ...config,
+        [sectionName]: { title: '', links: [] },
+      });
+      return null; // Avoid rendering until the section is initialized
+    }
+  
+    return (
+      <div className="mb-6 border-b pb-4">
+        <h3 className="text-lg font-semibold mb-2">{sectionTitle}</h3>
+        <input
+          type="text"
+          placeholder="Section Title"
+          value={config[sectionName].title || ''}
+          onChange={(e) =>
+            handleSectionChange(sectionName, 'title', e.target.value)
+          }
+          className="w-full border p-2 rounded mb-2"
+        />
+        {config[sectionName].links.map((link, index) => (
+          <div key={index} className="flex space-x-2 mb-2">
+            <input
+              type="text"
+              placeholder="Link Text"
+              value={link.text || ''}
+              onChange={(e) =>
+                handleLinkChange(sectionName, index, 'text', e.target.value)
+              }
+              className="w-1/2 border p-2 rounded"
+            />
+            <input
+              type="text"
+              placeholder="Link URL"
+              value={link.url || ''}
+              onChange={(e) =>
+                handleLinkChange(sectionName, index, 'url', e.target.value)
+              }
+              className="w-1/2 border p-2 rounded"
+            />
+            <button
+              onClick={() => removeLink(sectionName, index)}
+              className="text-red-500 text-sm"
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+        <button
+          onClick={() => addLink(sectionName)}
+          className="text-blue-500 text-sm"
+        >
+          + Add Link
+        </button>
+      </div>
+    );
+  };
+  
+  
 
   return (
     <div className="grid grid-cols-12 gap-6 p-6">

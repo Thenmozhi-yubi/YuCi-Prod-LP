@@ -26,8 +26,8 @@ const Trust = ({ trustConfig }) => {
   }, [isHovering, controls]);
 
   return (
-    <div className="p-8 justify-center flex flex-col items-center">
-      <h1 className="text-4xl font-bold mb-4 text-center">{trustConfig.title}</h1>
+    <div className="p-8 justify-center flex flex-col items-center mt-24">
+      <h1 className="text-3xl font-bold mb-24 text-center ">{trustConfig.title}</h1>
       <div
         ref={containerRef}
         className="overflow-hidden relative"
@@ -41,7 +41,7 @@ const Trust = ({ trustConfig }) => {
           style={{
             display: "flex",
             whiteSpace: "nowrap",
-            gap: "16px", // Adjust the gap between images here
+            gap: "30px", // Adjust the gap between images here
           }}
           animate={controls}
           onMouseEnter={() => {
@@ -66,9 +66,9 @@ const Trust = ({ trustConfig }) => {
               key={index}
               src={imgSrc}
               alt={`Carousel Image ${index + 1}`}
-              className="w-28 h-28 object-cover rounded-lg shadow-lg"
+              className="w-28 h-28 object-cover rounded-lg "
               onError={(e) => {
-                e.target.src = "/fallback-image.png"; // Replace with your fallback image
+                e.target.src = "/fallback-image.png"; 
               }}
             />
           ))}
@@ -79,9 +79,9 @@ const Trust = ({ trustConfig }) => {
               key={`${index}-clone`}
               src={imgSrc}
               alt={`Carousel Image Clone ${index + 1}`}
-              className="w-28 h-28 object-cover rounded-lg shadow-lg"
+              className="w-28 h-28 object-cover rounded-lg "
               onError={(e) => {
-                e.target.src = "/fallback-image.png"; // Replace with your fallback image
+                e.target.src = "/fallback-image.png"; 
               }}
             />
           ))}
