@@ -132,10 +132,6 @@ function App() {
             />
           }
         />
-         <Route
-          path="/admin/offer"
-          element={<TailorUpdate tailorConfig={tailorConfig} setTailorConfig={setTailorConfig} />}
-        />
       </Routes>
     </Router>
   );
