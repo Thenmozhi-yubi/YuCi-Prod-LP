@@ -23,6 +23,9 @@ const Home = ({
   ctaConfig,
   tailorConfig,
 }) => {
+
+  console.log("wdw",heroConfig);
+  
   return (
     <div>
       <div className="fixed top-0 left-0 w-full z-50">
@@ -30,10 +33,7 @@ const Home = ({
       </div>
       
       <Hero
-        title={heroConfig.title}
-        subtitle={heroConfig.subtitle}
-        bgImage={heroConfig.bgImage}
-        buttonText={heroConfig.buttonText}
+       heroConfig={heroConfig} 
       />
       <Feature featureConfig={featureConfig} />
       <Kpi kpiConfig={kpiConfig} />

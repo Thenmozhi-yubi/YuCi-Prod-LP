@@ -29,7 +29,9 @@ function App() {
           element={
             <Home
               navConfig={config.navConfig}
-              heroConfig={config.heroConfig}
+              heroConfig={config.heroConfig
+                
+              }
               featureConfig={config.featureConfig}
               kpiConfig={config.kpiConfig}
               videoConfig={config.videoConfig}
