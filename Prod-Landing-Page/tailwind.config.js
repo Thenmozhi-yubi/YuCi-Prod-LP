@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const plugin = require('tailwindcss/plugin');
+// eslint-disable-next-line no-undef
+// const plugin = require('tailwindcss/plugin');
 export default {
   content: [
     "./index.html",
@@ -33,52 +34,4 @@ export default {
     },
   },
 
-  plugins: [
-    plugin(function ({ addBase }) {
-      addBase({
-        // '@font-face': [
-        //   {
-        //     fontFamily: 'Sofia Pro',
-        //     fontStyle: 'normal',
-        //     fontDisplay: 'swap',
-        //     fontWeight: '400',
-        //     src: "url(/src/assets/fonts/SofiaPro-400.otf') ",
-        //   },
-        //   {
-        //     fontFamily: 'Sofia Pro',
-        //     fontStyle: 'normal',
-        //     fontDisplay: 'swap',
-        //     fontWeight: '500',
-        //     src: "url(/src/assets/fonts/SofiaPro-500.otf') ",
-        //   },
-        //   {
-        //     fontFamily: 'Sofia Pro',
-        //     fontStyle: 'normal',
-        //     fontDisplay: 'swap',
-        //     fontWeight: '600',
-        //     src: "url(/src/assets/fonts/SofiaPro-600.otf') ",
-        //   },
-        //   {
-        //     fontFamily: 'Sofia Pro',
-        //     fontStyle: 'normal',
-        //     fontDisplay: 'swap',
-        //     fontWeight: '700',
-        //     src: "url(/src/assets/fonts/SofiaPro-700.otf') ",
-        //   },
-        // ],
-        '@font-face' : [
-          {fontFamily: 'Sofia Pro',
-          src:
-              "url('https://design-system-qa.go-yubi.in/fonts/SofiaPro-400.woff2') format('woff2')",
-          fontWeight: '400',
-          fontStyle: 'normal',
-          fontDisplay: 'swap',
-          },
-        ]
-     
-
-        
-      });
-    }),
-  ],
 };

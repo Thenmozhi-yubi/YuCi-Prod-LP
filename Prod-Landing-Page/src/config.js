@@ -1,170 +1,177 @@
-let config = {
+import { useState, useEffect } from 'react';
+import { BASE_URL } from "./Constant";
+
+const defaultConfig = {
   navConfig: {
-    logo: "https://www.go-yubi.com/wp-content/uploads/2022/12/Yubi-900x0-1.png",
-    useCases: ["Use Case 1", "Use Case 2", "Use Case 3"],
-    cta: { text: "Get Started", link: "#cta" },
+    logo: "",
+    useCases: [],
+    cta: { text: "", link: "" },
   },
   heroConfig: {
-    title: "Welcome to Our Website",
-    subtitle: "We provide amazing solutions to help your business grow.",
-    bgImage: "https://i.pinimg.com/originals/e3/1b/75/e31b752875679b64fce009922f9f0dda.gif",
-    buttonText: "Get Started",
+    title: "",
+    subtitle: "",
+    bgImage: "",
+    buttonText: "",
   },
   featureConfig: {
     heading: {
-      title: "Amazing Features",
-      subtitle: "Explore now",
-      description: "Discover the top features we offer.",
+      title: "",
+      subtitle: "",
+      description: "",
     },
-    features: [
-      {
-        id: 1,
-        title: "Gain Insights",
-        subtitle: "Transform your business with data-driven decisions.",
-        image: "https://assets-v2.lottiefiles.com/a/e84e8ee6-1170-11ee-9647-d3729348d81a/WnrwQzHsg9.gif",
-        buttonText: "Learn More",
-        isImageLeft: true,
-      },
-      {
-        id: 2,
-        title: "Discover Opportunities",
-        subtitle: "Uncover new growth areas for your business.",
-        image: "https://i.pinimg.com/originals/de/d0/bb/ded0bbdd8485e424327257405a86a884.gif",
-        buttonText: "Explore",
-        isImageLeft: false,
-      },
-    ],
+    features: [],
   },
   kpiConfig: {
     heading: {
-      title: "Key Performance Indicators",
-      description: "Track important metrics to measure success.",
+      title: "",
+      description: "",
     },
-    kpis: [
-      { counter: 800, title: "Customer Satisfaction" },
-      { counter: 1200, title: "User Engagement" },
-      { counter: 500, title: "Revenue Growth" },
-    ],
+    kpis: [],
   },
   videoConfig: {
     heading: {
-      title: "Our Video Content",
-      description: "Watch our videos to learn more about our services and solutions.",
+      title: "",
+      description: "",
     },
-    videoSrc: "https://path/to/video.mp4",
+    videoSrc: "",
   },
   trustConfig: {
-    title: "Trusted by Top Companies",
-    images: ["https://www.shutterstock.ecom/image-illustration/ccpa-california-consumer-privacy-act-600nw-2120684813.jpg",
-      "https://www.loginradius.com/wp-content/uploads/2019/10/PNG_GDPR-e1672263252689.png",
-        "https://img.freepik.com/premium-vector/iso-certified-badge-with-globe_1135235-1978.jpg?semt=ais_hybrid",
-        "https://practicesuite.com/wp-content/uploads/2023/02/HIPPA1.jpg",
-        "https://accorian.com/wp-content/uploads/2022/08/aicpa-soc-logo-freelogovectors.net_-PNG.png"],
+    title: "",
+    images: [],
   },
-  articlesConfig: [
-    {
-      title: "improve the job search experience",
-      content: "The first platform for borrowers to choose from 750+ lenders and get the deal of their choice, quickly and 100% digitally. Get a wide variety of debt products, right from corporate loans and working capital to corporate bond issuances and vendor finance.",
-      image: "https://website2021-live-e3e78fbbd3cc41f2847799-7c49c59.divio-media.com/filer_public/73/52/7352020b-b331-47f5-8405-3d114bf0f28a/types-of-meetings.png",
-      buttonText: "Read More"
-    },
-    {
-      title: "improve the job search experience",
-      content: "The first platform for borrowers to choose from 750+ lenders and get the deal of their choice, quickly and 100% digitally. Get a wide variety of debt products, right from corporate loans and working capital to corporate bond issuances and vendor finance.",
-      image: "https://website2021-live-e3e78fbbd3cc41f2847799-7c49c59.divio-media.com/filer_public/73/52/7352020b-b331-47f5-8405-3d114bf0f28a/types-of-meetings.png",
-      buttonText: "Learn More"
-    },
-    {
-      title: "improve the job search experience",
-      content: "The first platform for borrowers to choose from 750+ lenders and get the deal of their choice, quickly and 100% digitally. Get a wide variety of debt products, right from corporate loans and working capital to corporate bond issuances and vendor finance.",
-      image: "https://website2021-live-e3e78fbbd3cc41f2847799-7c49c59.divio-media.com/filer_public/73/52/7352020b-b331-47f5-8405-3d114bf0f28a/types-of-meetings.png0",
-      buttonText: "Discover"
-    }
-  ],
+  articlesConfig: [],
   footerConfig: {
-    logo: "https://www.go-yubi.com/wp-content/uploads/2022/12/Yubi-900x0-1.png",
-    content: "© 2024 Our Company. All rights reserved.",
-    buttons: [
-      { text: "Login", link: "/login" },
-      { text: "Sign Up", link: "/signup" },
-    ],
-    socialImages: [
-      "https://cdn.pixabay.com/photo/2015/09/01/14/36/facebook-917108_960_720.png",
-      "https://cdn.pixabay.com/photo/2015/09/01/14/36/twitter-917116_960_720.png",
-      // More URLs...
-    ],
-    products: {
-      title: "Products",
-      links: [
-        { text: "Corporate Lending", url: "/products/corporate-lending" },
-        { text: "Supply Chain", url: "/products/supply-chain" },
-        { text: "Yubi Coloand", url: "/products/yubi-coloand" },
-        { text: "Yubi Pools", url: "/products/yubi-pools" },
-      ],
-    },
-    company: {
-      title: "Company",
-      links: [
-        { text: "Careers", url: "/company/careers" },
-        { text: "News and Media", url: "/company/news" },
-        { text: "Leverage India", url: "/company/leverage-india" },
-      ],
-    },
-    resources: {
-      title: "Resources",
-      links: [
-        { text: "Blog", url: "/resources/blog" },
-        { text: "Case Studies", url: "/resources/case-studies" },
-        { text: "Web Stories", url: "/resources/web-stories" },
-      ],
-    },
-    security: {
-      title: "Security",
-      links: [
-        { text: "Security", url: "/security" },
-        { text: "Yubi Trust", url: "/security/yubi-trust" },
-      ],
-    },
-    help: {
-      title: "Help",
-      links: [
-        { text: "Yubi Help Centre", url: "/help/centre" },
-      ],
-    },
+    logo: "",
+    content: "",
+    buttons: [],
+    socialImages: [],
+    products: { title: "", links: [] },
+    company: { title: "", links: [] },
+    resources: { title: "", links: [] },
+    security: { title: "", links: [] },
+    help: { title: "", links: [] },
   },
   ctaConfig: {
-    heading: "Start Your Journey Today",
-    content: "Join thousands of satisfied users who are leveraging our platform to achieve their goals. Experience seamless solutions tailored for you.",
+    heading: "",
+    content: "",
     button: {
-      text: "Get Started",
-      link: "#cta-section",
+      text: "",
+      link: "",
     },
-    image: "https://i.pinimg.com/originals/f3/4a/85/f34a85aa08d22de4b9e70b5fae468f14.gif", // Replace with your preferred image URL
+    image: "",
   },
- 
 };
-  
-const fetchConfigData = async () => {
-  try {
-    // Fetch the config data from the API endpoint
-    const response = await fetch("/api/config"); // Replace with your actual endpoint
-    if (!response.ok) {
-      throw new Error("Failed to fetch config data");
+
+// Single config object
+let config = { ...defaultConfig };
+
+// Custom hook for config data
+export const useConfig = (siteId) => {
+  const [configData, setConfigData] = useState(config);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/api/data`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'siteid': siteId
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch config data: ${response.statusText}`);
+        }
+
+        const { data } = await response.json();
+        console.log("raw_data",data);
+        
+        const newConfig = {
+         
+          navConfig: {
+            logo: data.topNavConfig?.Logo_URL || defaultConfig.navConfig.logo,  // Changed from logo
+            useCases: data.topNavConfig?.use_cases || defaultConfig.navConfig.useCases,  // Changed from useCases
+            cta: {
+              text: data.topNavConfig?.CTA_Text || defaultConfig.navConfig.cta.text,  // Changed from cta.text
+              link: data.topNavConfig?.CTA_Link || defaultConfig.navConfig.cta.link,  // Changed from cta.link
+            }
+          },
+          heroConfig: {
+            title: data.heroConfig?.Hero_title || defaultConfig.heroConfig.title,  // Changed from title
+            subtitle: data.heroConfig?.Hero_subtitle || defaultConfig.heroConfig.subtitle,  // Changed from subtitle
+            bgImage: data.heroConfig?.Bg_Img_URL || defaultConfig.heroConfig.bgImage,  // Changed from bgImage
+            buttonText: data.heroConfig?.ButtonText || defaultConfig.heroConfig.buttonText,  // Changed from buttonText
+          },
+          featureConfig: {
+            heading: {
+              title: data.featuresConfig?.heading?.title || defaultConfig.featureConfig.heading.title,
+              subtitle: data.featuresConfig?.heading?.subtitle || defaultConfig.featureConfig.heading.subtitle,
+              description: data.featuresConfig?.heading?.description || defaultConfig.featureConfig.heading.description,
+            },
+            features: data.featuresConfig?.features?.map(feature => ({
+              id: feature.id,
+              title: feature.title,
+              subtitle: feature.subtitle,
+              image: feature.image,
+              buttonText: feature.buttonText,
+              isImageLeft: feature.isImageLeft,
+            })) || defaultConfig.featureConfig.features,
+          },
+          kpiConfig: data.kpiConfig || defaultConfig.kpiConfig,  // Direct mapping as structure matches
+          videoConfig: {
+            heading: data.videoConfig?.heading || defaultConfig.videoConfig.heading,
+            videoSrc: data.videoConfig?.videoSrc || defaultConfig.videoConfig.videoSrc,
+          },
+          trustConfig: data.trustConfig || defaultConfig.trustConfig,  // Direct mapping as structure matches
+          articlesConfig: data.articleConfig || defaultConfig.articlesConfig,  // Direct mapping
+          footerConfig: data.footerConfig || defaultConfig.footerConfig,  // Direct mapping as structure matches
+          ctaConfig: data.ctaConfig || defaultConfig.ctaConfig,  // Remove ctaConfig nesting
+        };
+        console.log(newConfig);
+        
+
+        setConfigData(newConfig);
+        config = newConfig; // Update the shared config object
+      } catch (error) {
+        console.error("Error fetching config:", error);
+        setConfigData(defaultConfig);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [siteId]);
+
+  const updateConfig = (section, newData) => {
+    if (configData.hasOwnProperty(section)) {
+      const updatedConfig = {
+        ...configData,
+        [section]: { ...configData[section], ...newData }
+      };
+      setConfigData(updatedConfig);
+      config = updatedConfig; // Update the shared config object
+      return true;
     }
+    return false;
+  };
 
-    // Parse the response into JSON
-    const newConfigData = await response.json();
-
-    // Directly update the config object with the new data
-    Object.assign(config, newConfigData); // Merge the existing config with the fetched data
-    console.log("Updated config:", config);
-
-  } catch (error) {
-    console.error("Error fetching config:", error);
-  }
+  return { config: configData, loading, updateConfig };
 };
 
-// Initialize and fetch config data when the app starts (if needed)
-fetchConfigData();
+// Helper functions
+const getConfig = () => config;
 
+<<<<<<< HEAD
 export default config 
+=======
+
+export {
+  getConfig,
+  defaultConfig
+};
+
+export default config;
+>>>>>>> 478db7f (config)

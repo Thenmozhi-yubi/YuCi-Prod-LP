@@ -12,8 +12,12 @@ import ArticlesUpdate from "./Admin/ArticlesUpdate";
 import FooterUpdate from "./Admin/FooterUpdate";
 import configData from "./config";
 import CtaUpdate from "./Admin/CtaUpdate";
+import { useConfig } from './config';
 
 function App() {
+
+  const siteId = '109329';
+  const { config, loading, updateConfig } = useConfig(siteId);
   const [navConfig, setNavConfig] = useState(configData.navConfig);
   const [heroConfig, setHeroConfig] = useState(
     JSON.parse(localStorage.getItem("heroConfig")) || configData.heroConfig
