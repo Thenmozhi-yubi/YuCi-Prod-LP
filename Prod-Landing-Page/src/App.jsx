@@ -14,7 +14,8 @@ import CtaUpdate from "./Admin/CtaUpdate";
 import { useConfig } from './config';
 
 function App() {
-  const siteId = '536479';
+
+  const siteId = '948129';
   const { config, loading, updateConfig } = useConfig(siteId);
 
   if (loading) {
@@ -36,7 +37,7 @@ function App() {
               trustConfig={config.trustConfig}
               articles={config.articles || []}
               footerConfig={config.footerConfig}
-              ctaConfig={config.ctaConfig}
+              ctaConfig={config.ctaConfig.ctaConfig}
             />
           }
         />

@@ -24,18 +24,13 @@ const Cta = ({ ctaConfig = defaultCtaConfig }) => {
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex flex-col lg:flex-row items-center justify-between bg-primary text-white p-8 md:p-12 rounded-2xl shadow-xl">
-          
-          {/* Content Section */}
           <div className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0 space-y-6">
             <h2 className="text-2xl md:text-4xl font-bold leading-tight">
               {heading}
             </h2>
-            
             <p className="text-lg md:text-xl opacity-90">
               {content}
             </p>
-            
-            {/* Animated Button */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -55,7 +50,6 @@ const Cta = ({ ctaConfig = defaultCtaConfig }) => {
                 >
                   {button.text}
                 </motion.span>
-                
                 <motion.span
                   initial={{ x: 0 }}
                   whileHover={{ x: 10 }}
@@ -66,8 +60,6 @@ const Cta = ({ ctaConfig = defaultCtaConfig }) => {
               </motion.div>
             </motion.button>
           </div>
-          
-          {/* Image Section */}
           <div className="lg:w-1/2 lg:pl-12">
             <div className="relative rounded-xl overflow-hidden shadow-lg">
               <img
@@ -77,7 +69,6 @@ const Cta = ({ ctaConfig = defaultCtaConfig }) => {
               />
             </div>
           </div>
-          
         </div>
       </div>
     </section>
