@@ -7,7 +7,7 @@ const Hero = ({ heroConfig }) => {
   const safeHeroConfig = heroConfig || {};
   
   // Get the selected hero from config, default to 'hero1' if not specified
-  const selectedHero = safeHeroConfig.selectedHero || 'hero1';
+  const selectedHero = safeHeroConfig.selectedHero || 'hero2';
 
   // Function to render the selected hero component
   const renderHeroComponent = () => {

@@ -24,7 +24,7 @@ const Home = ({
   tailorConfig,
 }) => {
 
-  console.log("wdw",heroConfig);
+  console.log("wdw",articles);
   
   return (
     <div>

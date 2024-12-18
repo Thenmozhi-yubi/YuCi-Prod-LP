@@ -36,7 +36,7 @@ function App() {
               kpiConfig={config.kpiConfig}
               videoConfig={config.videoConfig}
               trustConfig={config.trustConfig}
-              articles={config.articles || []}
+              articles={config.articlesConfig || []}
               footerConfig={config.footerConfig}
               ctaConfig={config.ctaConfig}
             />
