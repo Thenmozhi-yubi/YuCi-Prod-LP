@@ -1,9 +1,9 @@
 import React from "react";
-import KpiCounter from "./KpiCounter";
+import KpiCounter from "../components/KpiCounter";
 import { motion } from "framer-motion";
 
-const Kpi2 = () => {
-    const { heading = {}, kpis = [] } = kpiConfig;
+const Kpi2 = ({heading = {}, kpis = []}) => {
+   
   return (
     <div className="p-8 bg-primary2 py-20  flex">
     {/* Parent container with 12-column grid */}
