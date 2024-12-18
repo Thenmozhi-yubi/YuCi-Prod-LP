@@ -8,6 +8,8 @@ import Trust from "../components/Trust";
 import Articles from "../components/Articles";
 import Footer from "../components/Footer";
 import Cta from "../components/Cta";
+import Offer1 from "../Tailor Layout/Tailor1";
+import Tailor1 from "../Tailor Layout/Tailor1";
 
 const Home = ({
   heroConfig,
@@ -19,6 +21,7 @@ const Home = ({
   articles,
   footerConfig,
   ctaConfig,
+  tailorConfig,
 }) => {
   return (
     <div>
@@ -37,6 +40,7 @@ const Home = ({
       <VideoSection videoConfig={videoConfig} />
       <Trust trustConfig={trustConfig} />
       <Articles articles={articles} />
+      <Tailor1 tailorConfig={tailorConfig}/>
       <div className="flex flex-col">
         <div className="-mb-40"><Cta ctaConfig={ctaConfig}/></div>
         <div><Footer footerConfig={footerConfig} /></div>
