@@ -9,7 +9,7 @@ const defaultConfig = {
  },
  heroConfig: {
    title: "",
-   subtitle: "", 
+   subtitle: "",
    bgImage: "",
    buttonText: "",
  },
