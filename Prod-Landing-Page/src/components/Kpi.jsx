@@ -32,45 +32,11 @@ const Kpi = ({ kpiConfig = {} }) => {
       </div>
     </div>
 
-    {/* ======================================================= */}
-    <div className="p-8 bg-[#ffffff] py-20 rounded-xl flex">
-  {/* Parent container with 12-column grid */}
-  <div className="grid grid-cols-12 gap-6 w-full mx-12 border p-4 ">
-    
-    {/* Left side - span 5 columns */}
-    <div className="col-span-12 sm:col-span-5 text-center mb-8 max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-        {heading.title || "Default Title"}
-      </h1>
-      <p className="text-content mt-10">
-        {heading.description || "Default description"}
-      </p>
-    </div>
-
-    {/* Right side - span 7 columns */}
-    <div className="col-span-12 sm:col-span-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 gap-y-8 mt-32">
-      {kpis.length > 0 ? (
-        kpis.map((kpi, index) => (
-          <div key={index} className="text-center">
-            {/* First Line: Counter with Unit */}
-            <div className="flex justify-center items-center space-x-2">
-              <KpiCounter targetValue={kpi.counter} />
-              <p className="text-2xl font-bold text-secondary">
-                {kpi.unit === "Percentage" ? `%` : ` SEC`}
-              </p>
-            </div>
-            {/* Second Line: KPI Title */}
-            <p className="text-base text-content mt-2">{kpi.title}</p>
-          </div>
-        ))
-      ) : (
-        <p className="col-span-full text-center">No KPIs available</p>
-      )}
-    </div>
-  </div>
+   
+  
 </div>
 
-    </div>
+   
     
   );
 };
