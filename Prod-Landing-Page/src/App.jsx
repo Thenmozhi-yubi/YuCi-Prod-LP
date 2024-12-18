@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./page/Home";
 import AdminPage from "./Admin/AdminPage";
@@ -11,60 +11,15 @@ import TrustUpdate from "./Admin/TrustUpdate";
 import ArticlesUpdate from "./Admin/ArticlesUpdate";
 import FooterUpdate from "./Admin/FooterUpdate";
 import CtaUpdate from "./Admin/CtaUpdate";
+import { useConfig } from './config';
 
 function App() {
-  const [navConfig, setNavConfig] = useState(configData.navConfig);
-  const [heroConfig, setHeroConfig] = useState(
-    JSON.parse(localStorage.getItem("heroConfig")) || configData.heroConfig
-  );
-  const [featureConfig, setFeatureConfig] = useState(configData.featureConfig);
-  const [kpiConfig, setKpiConfig] = useState(
-    JSON.parse(localStorage.getItem("kpiConfig")) || configData.kpiConfig
-  );
-  const [videoConfig, setVideoConfig] = useState(
-    JSON.parse(localStorage.getItem("videoConfig")) || configData.videoConfig
-  );
-  const [trustConfig, setTrustConfig] = useState(
-    JSON.parse(localStorage.getItem("trustConfig")) || configData.trustConfig
-  );
-  const [articles, setArticles] = useState(
-    JSON.parse(localStorage.getItem("articles")) || []
-  );
-  const [footerConfig, setFooterConfig] = useState(
-    JSON.parse(localStorage.getItem("footerConfig")) || configData.footerConfig
-  );
+  const siteId = '536479';
+  const { config, loading, updateConfig } = useConfig(siteId);
 
-  const [ctaConfig, setCtaConfig] = useState(
-    JSON.parse(localStorage.getItem("ctaConfig")) || configData.ctaConfig
-  )
-
-  useEffect(() => {
-    localStorage.setItem("heroConfig", JSON.stringify(heroConfig));
-  }, [heroConfig]);
-
-  useEffect(() => {
-    localStorage.setItem("kpiConfig", JSON.stringify(kpiConfig));
-  }, [kpiConfig]);
-
-  useEffect(() => {
-    localStorage.setItem("videoConfig", JSON.stringify(videoConfig));
-  }, [videoConfig]);
-
-  useEffect(() => {
-    localStorage.setItem("trustConfig", JSON.stringify(trustConfig));
-  }, [trustConfig]);
-
-  useEffect(() => {
-    localStorage.setItem("articles", JSON.stringify(articles));
-  }, [articles]);
-
-  useEffect(() => {
-    localStorage.setItem("footerConfig", JSON.stringify(footerConfig));
-  }, [footerConfig]);
- 
-  useEffect(() => {
-    localStorage.setItem("ctaConfig", JSON.stringify(ctaConfig));
-  }, [ctaConfig]);
+  if (loading) {
+    return <div>Loading...</div>; // Add proper loading state handling
+  }
 
   return (
     <Router>
@@ -73,15 +28,15 @@ function App() {
           path="/"
           element={
             <Home
-              navConfig={navConfig}
-              heroConfig={heroConfig}
-              featureConfig={featureConfig}
-              kpiConfig={kpiConfig}
-              videoConfig={videoConfig}
-              trustConfig={trustConfig}
-              articles={articles}
-              footerConfig={footerConfig}
-              ctaConfig={ctaConfig}
+              navConfig={config.navConfig}
+              heroConfig={config.heroConfig}
+              featureConfig={config.featureConfig}
+              kpiConfig={config.kpiConfig}
+              videoConfig={config.videoConfig}
+              trustConfig={config.trustConfig}
+              articles={config.articles || []}
+              footerConfig={config.footerConfig}
+              ctaConfig={config.ctaConfig}
             />
           }
         />
@@ -174,10 +129,6 @@ function App() {
               setCtaConfig={(newConfig) => updateConfig({ ...config, ctaConfig: newConfig })} 
             />
           }
-        />
-         <Route
-          path="/admin/offer"
-          element={<TailorUpdate tailorConfig={tailorConfig} setTailorConfig={setTailorConfig} />}
         />
       </Routes>
     </Router>
