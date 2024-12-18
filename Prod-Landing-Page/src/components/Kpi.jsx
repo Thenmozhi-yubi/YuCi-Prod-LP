@@ -1,5 +1,6 @@
 import React from "react";
 import KpiCounter from "./KpiCounter";
+import { motion } from "framer-motion";
 
 const Kpi = ({ kpiConfig = {} }) => {
   const { heading = {}, kpis = [] } = kpiConfig;
@@ -32,9 +33,11 @@ const Kpi = ({ kpiConfig = {} }) => {
       </div>
     </div>
 
+
    
   
 </div>
+
 
    
     
