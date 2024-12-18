@@ -1,91 +1,86 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 
+const defaultCtaConfig = {
+  heading: "Get Started Today",
+  content: "Ready to take the next step? Join us now!",
+  button: {
+    text: "Learn More",
+    link: "#"
+  },
+  image: "/api/placeholder/600/400"
+};
 
-const Cta = ({ ctaConfig }) => {
-  const { heading, content, button, image } = ctaConfig;
+const Cta = ({ ctaConfig = defaultCtaConfig }) => {
+  const { 
+    heading, 
+    content, 
+    button = defaultCtaConfig.button, 
+    image 
+  } = { ...defaultCtaConfig, ...ctaConfig };
 
   return (
-    <div className="container mx-auto px-4 p-8 max-w-4xl relative z-10 mt-24"> 
-      <div className="flex flex-col lg:flex-row items-center justify-between bg-primary text-white p-8 rounded-lg shadow-md">
-        {/* Left Side */}
-        <div className="lg:w-1/2 text-center lg:text-left mb-6 lg:mb-0">
-          {/* Heading */}
-          <h2 className="text-3xl font-bold mb-4">{heading}</h2>
-          {/* Content */}
-          <p className="mb-6">{content}</p>
-          {/* Button */}
-          {/* <a
-            href={button.link}
-            className="bg-blue-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition duration-200"
-          >
-            {button.text}
-          </a> */}
-           <motion.button
-              whileHover={{
-                scale: 1.05,
-              }}
-              whileTap={{
-                scale: 0.95,
-              }}
-              className="relative px-6 py-2 text-xs sm:text-sm lg:text-base rounded-md text-white bg-secondary "
-              disabled={false}
+    <section className="py-20 bg-gray-50">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="flex flex-col lg:flex-row items-center justify-between bg-primary text-white p-8 md:p-12 rounded-2xl shadow-xl">
+          
+          {/* Content Section */}
+          <div className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0 space-y-6">
+            <h2 className="text-2xl md:text-4xl font-bold leading-tight">
+              {heading}
+            </h2>
+            
+            <p className="text-lg md:text-xl opacity-90">
+              {content}
+            </p>
+            
+            {/* Animated Button */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block relative px-8 py-3 text-sm md:text-base rounded-lg text-white bg-secondary hover:bg-opacity-90 transition-colors"
             >
-              {/* Button Content */}
               <motion.div
-                className="relative flex items-center justify-center"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px", // Initial gap between arrow and text
-                  // overflow: "hidden",
-                }}
+                className="flex items-center justify-center space-x-3"
                 whileHover={{
-                  gap: "30px", // Adjust gap for both arrow and text on hover
-                  transition: { duration: 0.5, ease: "easeInOut" },
+                  gap: "1.5rem",
+                  transition: { duration: 0.3, ease: "easeInOut" }
                 }}
               >
-                {/* Arrow and Text */}
-                <motion.div
-                  className="flex items-center gap-2" // This groups the text and arrow together
+                <motion.span
                   initial={{ x: 0 }}
-                  whileHover={{
-                    x: 100, // Moves arrow and text together to the right
-                    transition: { duration: 0.5, ease: "easeInOut" },
-                  }}
+                  whileHover={{ x: -10 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  {/* Arrow */}
-                  <motion.span
-                    initial={{ x: 0 }}
-                    whileHover={{ x: 90 }} // Arrow moves right on hover
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                  >
-                    <FaArrowRight className="bg-primary p-2 text-white rounded-full text-3xl" />
-                  </motion.span>
-
-                  {/* Text */}
-                  <motion.span
-                    initial={{ x: 0 }}
-                    whileHover={{ x: -130 }} // Text moves left on hover
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                  >
-                    {button.text}
-                  </motion.span>
-                </motion.div>
+                  {button.text}
+                </motion.span>
+                
+                <motion.span
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <FaArrowRight className="w-5 h-5" />
+                </motion.span>
               </motion.div>
             </motion.button>
-        </div>
-        {/* Right Side */}
-        <div className="lg:w-1/2">
-          <img
-            src={image}
-            alt="CTA Illustration"
-            className="w-full h-48 object-cover rounded-lg"
-          />
+          </div>
+          
+          {/* Image Section */}
+          <div className="lg:w-1/2 lg:pl-12">
+            <div className="relative rounded-xl overflow-hidden shadow-lg">
+              <img
+                src={image}
+                alt="CTA visual"
+                className="w-full h-64 md:h-80 object-cover transform hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+          
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

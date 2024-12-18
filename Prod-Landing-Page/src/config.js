@@ -164,9 +164,7 @@ export const useConfig = (siteId) => {
 // Helper functions
 const getConfig = () => config;
 
-<<<<<<< HEAD
-export default config 
-=======
+
 
 export {
   getConfig,
@@ -174,4 +172,4 @@ export {
 };
 
 export default config;
->>>>>>> 478db7f (config)
+
