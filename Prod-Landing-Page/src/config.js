@@ -167,4 +167,4 @@ const fetchConfigData = async () => {
 // Initialize and fetch config data when the app starts (if needed)
 fetchConfigData();
 
-export { config };
+export default config 

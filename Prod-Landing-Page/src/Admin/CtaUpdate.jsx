@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import config from '../config'; // Assuming the config file is in the same directory
+
 import Cta from '../components/Cta';
 
 const CtaUpdate = ({ ctaConfig = {}, setCtaConfig }) => {

@@ -18,8 +18,12 @@ export default {
         secondary: "#1e2737",  // Secondary color
         heading: "#030a17",    // Heading text color
         content: "#586170",
+        primary2: "#03142D",    // Primary color
+        secondary2: "#5877A2", 
            
       },
+      
+
       fontFamily: {
         sofia: ['Sofia Pro', 'sans-serif'],
       },

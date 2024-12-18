@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from "react";
 import BackgroundSVG from '../assets/Mask group.svg';
 
-const Hero = ({
-  title,
-  subtitle,
-  bgImage,
-  buttonText,
-}) => {
-  const [storedHeroConfig, setStoredHeroConfig] = useState(null);
-
-  useEffect(() => {
-    const savedHeroConfig = JSON.parse(localStorage.getItem("heroConfig"));
-    if (savedHeroConfig) {
-      setStoredHeroConfig(savedHeroConfig);
-    } else {
-      setStoredHeroConfig({
+const Hero2 = (
+    {
         title,
         subtitle,
         bgImage,
         buttonText,
-      });
-    }
-  }, [title, subtitle, bgImage, buttonText]);
+      }
+) => {
+    const [storedHeroConfig, setStoredHeroConfig] = useState(null);
 
+    useEffect(() => {
+      const savedHeroConfig = JSON.parse(localStorage.getItem("heroConfig"));
+      if (savedHeroConfig) {
+        setStoredHeroConfig(savedHeroConfig);
+      } else {
+        setStoredHeroConfig({
+          title,
+          subtitle,
+          bgImage,
+          buttonText,
+        });
+      }
+    }, [title, subtitle, bgImage, buttonText]);
   return (
     <div className="flex flex-wrap items-center justify-between py-16  ">    
         {/* second component */}
@@ -70,7 +71,7 @@ const Hero = ({
 
      
     </div>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero2
