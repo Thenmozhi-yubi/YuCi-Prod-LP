@@ -9,7 +9,12 @@ import Articles from "../components/Articles";
 import Footer from "../components/Footer";
 import Cta from "../components/Cta";
 import Tailor1 from "../Tailor Layout/Tailor1";
+
 import Offer from "../components/Offer";
+
+import Testimonial1 from "../Testimonial Layout/Testimonial1";
+import Testimonial2 from "../Testimonial Layout/Testimonial2";
+
 
 const Home = ({
   heroConfig,
@@ -22,7 +27,11 @@ const Home = ({
   footerConfig,
   ctaConfig,
   tailorConfig,
-  offerConfig
+
+  offerConfig,
+
+  testimonialConfig,
+
 }) => {
 
 
@@ -38,7 +47,11 @@ const Home = ({
       <Hero
        heroConfig={heroConfig} 
       />
+
       <Offer offerConfig={offerConfig}/>
+
+      <Testimonial2 testimonialConfig={testimonialConfig}/>
+
       <Feature featureConfig={featureConfig} />
       <Kpi kpiConfig={kpiConfig} />  
       <VideoSection videoConfig={videoConfig} />
@@ -46,8 +59,10 @@ const Home = ({
       <Articles articles={articles} />
       <Tailor1 tailorConfig={tailorConfig}/>
       <div className="flex flex-col">
-        <div className="-mb-40"><Cta ctaConfig={ctaConfig}/></div>
-        <div><Footer footerConfig={footerConfig} /></div>
+        {/* <div className="-mb-40"><Cta ctaConfig={ctaConfig}/></div> */}
+
+        <div><Footer  /></div>
+
       
       
       </div>

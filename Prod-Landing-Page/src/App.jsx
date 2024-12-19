@@ -118,15 +118,7 @@ function App() {
             />
           }
         />
-        <Route
-          path="/admin/footer"
-          element={
-            <FooterUpdate 
-              footerConfig={config.footerConfig} 
-              setFooterConfig={(newConfig) => updateConfig({ ...config, footerConfig: newConfig })} 
-            />
-          }
-        />
+        
         <Route
           path="/admin/cta"
           element={
