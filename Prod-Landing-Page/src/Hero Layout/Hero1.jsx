@@ -10,21 +10,7 @@ const Hero1 = (
         buttonText,
       }
 ) => {
-    const [storedHeroConfig, setStoredHeroConfig] = useState(null);
-
-  useEffect(() => {
-    const savedHeroConfig = JSON.parse(localStorage.getItem("heroConfig"));
-    if (savedHeroConfig) {
-      setStoredHeroConfig(savedHeroConfig);
-    } else {
-      setStoredHeroConfig({
-        title,
-        subtitle,
-        bgImage,
-        buttonText,
-      });
-    }
-  }, [title, subtitle, bgImage, buttonText]);
+    
   return (
     <div className='flex flex-wrap items-center justify-between py-16'>
          <div className="container mx-auto max-w-screen-xl">
@@ -34,10 +20,10 @@ const Hero1 = (
   {/* Left Side */}
   <div className="w-full md:w-1/2 text-center md:text-left mb-6 md:mb-0">
     <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4 font-sofia text-heading">
-      {storedHeroConfig?.title || title}
+      {title}
     </h1>
     <p className="text-sm sm:text-lg lg:text-lg my-10 font-sofia text-content">
-      {storedHeroConfig?.subtitle || subtitle}
+      {subtitle}
     </p>
     <motion.button
       whileHover={{
@@ -87,7 +73,7 @@ const Hero1 = (
             whileHover={{ x: -130 }} // Text moves left on hover
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            {storedHeroConfig?.buttonText || buttonText}
+            {buttonText}
           </motion.span>
         </motion.div>
       </motion.div>
@@ -97,7 +83,7 @@ const Hero1 = (
   {/* Right Side */}
   <div className="w-full md:w-1/2">
     <img
-      src={storedHeroConfig?.bgImage || bgImage}
+      src={bgImage}
       alt="Hero"
       className="w-full h-auto object-cover rounded-lg"
     />

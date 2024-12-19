@@ -87,6 +87,15 @@ const AdminPage = () => {
           <h3 className="text-lg font-medium">cta</h3>
           <p className="text-sm text-gray-600">Configure the cta section.</p>
         </div>
+
+         {/* offer Card */}
+         <div
+          className="bg-gray-100 border rounded-md shadow-md p-4 cursor-pointer hover:shadow-lg"
+          onClick={() => navigate("/admin/offer")}
+        >
+          <h3 className="text-lg font-medium">offer</h3>
+          <p className="text-sm text-gray-600">Configure the offer section.</p>
+        </div>
       </div>
     </div>
   );

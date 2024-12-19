@@ -21,3 +21,6 @@
     will-change: transform;
   }
   
+  :root {
+    --primary-hover: #darker-shade-of-primary;
+  }

@@ -9,21 +9,7 @@ const Hero2 = (
         buttonText,
       }
 ) => {
-    const [storedHeroConfig, setStoredHeroConfig] = useState(null);
-
-    useEffect(() => {
-      const savedHeroConfig = JSON.parse(localStorage.getItem("heroConfig"));
-      if (savedHeroConfig) {
-        setStoredHeroConfig(savedHeroConfig);
-      } else {
-        setStoredHeroConfig({
-          title,
-          subtitle,
-          bgImage,
-          buttonText,
-        });
-      }
-    }, [title, subtitle, bgImage, buttonText]);
+   
   return (
     <div className="flex flex-wrap items-center justify-between py-16  ">    
         {/* second component */}
@@ -49,17 +35,17 @@ const Hero2 = (
    {/* Left Side */}
    <div className="w-full md:w-1/2 text-center md:text-left mb-6 md:mb-0 px-4 z-10">
      <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4 font-sofia text-white">
-       {storedHeroConfig?.title || title}
+       {title}
      </h1>
      <p className="text-sm sm:text-lg lg:text-base my-10 font-sofia text-gray-200">
-       {storedHeroConfig?.subtitle || subtitle}
+       {subtitle}
      </p>
    </div>
 
    {/* Right Side */}
    <div className="w-full md:w-1/2 px-4 z-10">
      <img
-       src={storedHeroConfig?.bgImage || bgImage}
+       src={bgImage}
        alt="Hero"
        className="h-[484px] w-[484px] object-cover rounded-3xl border shadow-[0_0_80px_20px_rgba(0,0,0,1)]"
      />

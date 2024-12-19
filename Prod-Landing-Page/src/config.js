@@ -60,6 +60,35 @@ const defaultConfig = {
     },
     image: "",
   },
+  tailorConfig: {
+    heading:{
+      title: "Tailor-Made Intelligence for Every Industry",
+      subtitle:"Adapts to the unique needs of every sector, delivering actionable insights & boosting efficiency across industries",
+      // spann:"trust"
+    },
+    cards: [
+      {
+        image: "https://www.shutterstock.com/image-illustration/ccpa-california-consumer-privacy-act-600nw-2120684813.jpg",
+        heading: "CCPA Compliant",
+        content: "We adhere to the California Consumer Privacy Act to ensure your data privacy."
+      },
+      {
+        image: "https://www.loginradius.com/wp-content/uploads/2019/10/PNG_GDPR-e1672263252689.png",
+        heading: "GDPR Certified",
+        content: "Compliant with General Data Protection Regulation for enhanced user data protection."
+      },
+      {
+        image: "https://img.freepik.com/premium-vector/iso-certified-badge-with-globe_1135235-1978.jpg?semt=ais_hybrid",
+        heading: "ISO Certified",
+        content: "Internationally recognized standards for quality and security assurance."
+      },
+      {
+        image: "https://practicesuite.com/wp-content/uploads/2023/02/HIPPA1.jpg",
+        heading: "HIPAA Compliance",
+        content: "Fully compliant with HIPAA for protecting sensitive health information."
+      },
+    ],
+  }
 };
 
 // Single config object
@@ -103,6 +132,7 @@ export const useConfig = (siteId) => {
             subtitle: data.heroConfig?.Hero_subtitle || defaultConfig.heroConfig.subtitle,  // Changed from subtitle
             bgImage: data.heroConfig?.Bg_Img_URL || defaultConfig.heroConfig.bgImage,  // Changed from bgImage
             buttonText: data.heroConfig?.ButtonText || defaultConfig.heroConfig.buttonText,  // Changed from buttonText
+            selectedHero:data.heroConfig?.selectedHero || ''
           },
           featureConfig: {
             heading: {
@@ -128,7 +158,9 @@ export const useConfig = (siteId) => {
           articlesConfig: data.articleConfig || defaultConfig.articlesConfig,  // Direct mapping
           footerConfig: data.footerConfig || defaultConfig.footerConfig,  // Direct mapping as structure matches
           ctaConfig: data.ctaConfig || defaultConfig.ctaConfig,  // Remove ctaConfig nesting
+          tailorConfig:data.tailorConfig || defaultConfig.tailorConfig
         };
+        
         console.log(newConfig);
         
 
@@ -172,4 +204,3 @@ export {
 };
 
 export default config;
-

@@ -18,7 +18,7 @@ const TopNav1 = () => {
     <div className="container max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
       {/* Logo */}
       <div className="flex items-center flex-shrink-0">
-        <img src={logo} alt="Logo" className="w-auto h-12 sm:h-14 md:h-16 lg:h-20" />
+        <img src={logo} alt="Logo" className="w-auto h-12 sm:h-14 md:h-12 lg:h-20" />
       </div>
 
       {/* Navigation Links */}

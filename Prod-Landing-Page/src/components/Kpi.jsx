@@ -1,77 +1,29 @@
 import React from "react";
-import KpiCounter from "./KpiCounter";
+import Kpi1 from "../Kpi Layout/Kpi1";
+import Kpi2 from "../Kpi Layout/Kpi2";
 
-const Kpi = ({ kpiConfig = {} }) => {
-  const { heading = {}, kpis = [] } = kpiConfig;
+const Kpi = ({ kpiConfig }) => {
+  // Ensure kpiConfig exists to prevent errors
+  const safeKpiConfig = kpiConfig || {};
+  
+  // Get the selected kpi from config, default to 'kpi1' if not specified
+  const selectedKpi = safeKpiConfig.selectedKpi || 'kpi2';
+
+  // Function to render the selected kpi component
+  const renderKpiComponent = () => {
+    switch (selectedKpi.toLowerCase()) {
+      case '2':
+        return <Kpi2 heading={safeKpiConfig.heading} kpis={safeKpiConfig.kpis} />;
+      case '1':
+      default:
+        return <Kpi1 heading={safeKpiConfig.heading} kpis={safeKpiConfig.kpis} />;
+    }
+  };
 
   return (
-    <div>
-      <div className="p-8 bg-[#ffffff] py-20 rounded-xl  border-primary shadow-[0_4px_15px_rgba(253,113,73,0.5)]">
-     <div className="text-center mb-8 max-w-2xl mx-auto">
-  <h1 className="text-3xl font-bold  bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent ">{heading.title || "Default Title"}</h1>
-  <p className="text-content mt-10">{heading.description || "Default description"}</p>
-</div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 gap-y-8 mt-32 ">
-        {kpis.length > 0 ? (
-          kpis.map((kpi, index) => (
-            <div key={index} className="text-center ">
-              {/* First Line: Counter with Unit */}
-              <div className="flex justify-center items-center space-x-2">
-                <KpiCounter  targetValue={kpi.counter}  />
-                <p className="text-2xl font-bold text-secondary">
-                  {kpi.unit === "Percentage" ? `%` : ` SEC`}
-                </p>
-              </div>
-              {/* Second Line: KPI Title */}
-              <p className="text-base text-content  mt-2">{kpi.title}</p>
-            </div>
-          ))
-        ) : (
-          <p className="col-span-full text-center">No KPIs available</p>
-        )}
-      </div>
+    <div className="kpi-wrapper">
+      {renderKpiComponent()}
     </div>
-
-    {/* ======================================================= */}
-    <div className="p-8 bg-[#ffffff] py-20 rounded-xl flex">
-  {/* Parent container with 12-column grid */}
-  <div className="grid grid-cols-12 gap-6 w-full mx-12 border p-4 ">
-    
-    {/* Left side - span 5 columns */}
-    <div className="col-span-12 sm:col-span-5 text-center mb-8 max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-        {heading.title || "Default Title"}
-      </h1>
-      <p className="text-content mt-10">
-        {heading.description || "Default description"}
-      </p>
-    </div>
-
-    {/* Right side - span 7 columns */}
-    <div className="col-span-12 sm:col-span-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 gap-y-8 mt-32">
-      {kpis.length > 0 ? (
-        kpis.map((kpi, index) => (
-          <div key={index} className="text-center">
-            {/* First Line: Counter with Unit */}
-            <div className="flex justify-center items-center space-x-2">
-              <KpiCounter targetValue={kpi.counter} />
-              <p className="text-2xl font-bold text-secondary">
-                {kpi.unit === "Percentage" ? `%` : ` SEC`}
-              </p>
-            </div>
-            {/* Second Line: KPI Title */}
-            <p className="text-base text-content mt-2">{kpi.title}</p>
-          </div>
-        ))
-      ) : (
-        <p className="col-span-full text-center">No KPIs available</p>
-      )}
-    </div>
-  </div>
-</div>
-
-    </div>
-    
   );
 };
 

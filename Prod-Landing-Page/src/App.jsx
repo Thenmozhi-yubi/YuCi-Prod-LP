@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./page/Home";
 import AdminPage from "./Admin/AdminPage";
@@ -14,7 +14,7 @@ import CtaUpdate from "./Admin/CtaUpdate";
 import { useConfig } from './config';
 
 function App() {
-  const siteId = '109329';
+  const siteId = '662854';
   const { config, loading, updateConfig } = useConfig(siteId);
 
   if (loading) {
@@ -29,14 +29,17 @@ function App() {
           element={
             <Home
               navConfig={config.navConfig}
-              heroConfig={config.heroConfig}
+              heroConfig={config.heroConfig
+                
+              }
               featureConfig={config.featureConfig}
               kpiConfig={config.kpiConfig}
               videoConfig={config.videoConfig}
               trustConfig={config.trustConfig}
-              articles={config.articles || []}
+              articles={config.articlesConfig.articles || []}
               footerConfig={config.footerConfig}
               ctaConfig={config.ctaConfig}
+              tailorConfig={config.tailorConfig}
             />
           }
         />
