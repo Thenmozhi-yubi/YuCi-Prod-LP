@@ -10,6 +10,8 @@ import Footer from "../components/Footer";
 import Cta from "../components/Cta";
 import Offer1 from "../Tailor Layout/Tailor1";
 import Tailor1 from "../Tailor Layout/Tailor1";
+import Testimonial1 from "../Testimonial Layout/Testimonial1";
+import Testimonial2 from "../Testimonial Layout/Testimonial2";
 
 const Home = ({
   heroConfig,
@@ -22,6 +24,7 @@ const Home = ({
   footerConfig,
   ctaConfig,
   tailorConfig,
+  testimonialConfig,
 }) => {
 
   console.log("wdw",ctaConfig);
@@ -35,6 +38,7 @@ const Home = ({
       <Hero
        heroConfig={heroConfig} 
       />
+      <Testimonial2 testimonialConfig={testimonialConfig}/>
       <Feature featureConfig={featureConfig} />
       <Kpi kpiConfig={kpiConfig} />
       <VideoSection videoConfig={videoConfig} />
@@ -42,7 +46,7 @@ const Home = ({
       <Articles articles={articles} />
       <Tailor1 tailorConfig={tailorConfig}/>
       <div className="flex flex-col">
-        <div className="-mb-40"><Cta ctaConfig={ctaConfig}/></div>
+        {/* <div className="-mb-40"><Cta ctaConfig={ctaConfig}/></div> */}
         <div><Footer footerConfig={footerConfig} /></div>
       
       
