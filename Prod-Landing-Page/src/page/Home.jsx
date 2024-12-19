@@ -11,6 +11,7 @@ import Cta from "../components/Cta";
 import Tailor1 from "../Tailor Layout/Tailor1";
 
 import Offer from "../components/Offer";
+import Tailor from "../components/Tailor";
 
 import Testimonial1 from "../Testimonial Layout/Testimonial1";
 import Testimonial2 from "../Testimonial Layout/Testimonial2";
@@ -49,15 +50,12 @@ const Home = ({
       />
 
       <Offer offerConfig={offerConfig}/>
-
-      <Testimonial2 testimonialConfig={testimonialConfig}/>
-
+      <Tailor tailorConfig={tailorConfig}/>
       <Feature featureConfig={featureConfig} />
       <Kpi kpiConfig={kpiConfig} />  
       <VideoSection videoConfig={videoConfig} />
       <Trust trustConfig={trustConfig} />
       <Articles articles={articles} />
-      <Tailor1 tailorConfig={tailorConfig}/>
       <div className="flex flex-col">
         {/* <div className="-mb-40"><Cta ctaConfig={ctaConfig}/></div> */}
 

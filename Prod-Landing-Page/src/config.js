@@ -101,7 +101,6 @@ const defaultConfig = {
     heading:{
       title: "Tailor-Made Intelligence for Every Industry",
       subtitle:"Adapts to the unique needs of every sector, delivering actionable insights & boosting efficiency across industries",
-      // spann:"trust"
     },
     cards: [
       {
