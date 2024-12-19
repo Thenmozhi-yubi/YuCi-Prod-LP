@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BASE_URL } from "./Constant";
 
 const defaultConfig = {
+
   navConfig: {
     logo: "",
     useCases: [],
@@ -89,13 +90,13 @@ const defaultConfig = {
       },
     ],
   }
+
 };
 
-// Single config object
 let config = { ...defaultConfig };
 
-// Custom hook for config data
 export const useConfig = (siteId) => {
+
   const [configData, setConfigData] = useState(config);
   const [loading, setLoading] = useState(true);
 
@@ -191,6 +192,7 @@ export const useConfig = (siteId) => {
   };
 
   return { config: configData, loading, updateConfig };
+
 };
 
 // Helper functions
