@@ -24,7 +24,7 @@ const Home = ({
   tailorConfig,
 }) => {
 
-  console.log("wdw",articles);
+  console.log("wdw",kpiConfig);
   
   return (
     <div>
@@ -36,7 +36,7 @@ const Home = ({
        heroConfig={heroConfig} 
       />
       <Feature featureConfig={featureConfig} />
-      <Kpi kpiConfig={kpiConfig} />
+      <Kpi kpiConfig={kpiConfig} />  
       <VideoSection videoConfig={videoConfig} />
       <Trust trustConfig={trustConfig} />
       <Articles articles={articles} />

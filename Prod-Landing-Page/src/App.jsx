@@ -15,6 +15,8 @@ import { useConfig } from './config';
 
 function App() {
   const siteId = '536479';
+
+  const siteId = '536479';
   const { config, loading, updateConfig } = useConfig(siteId);
 
   if (loading) {
