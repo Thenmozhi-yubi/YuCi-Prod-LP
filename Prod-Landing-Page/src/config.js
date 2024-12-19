@@ -144,13 +144,13 @@ export const useConfig = (siteId) => {
             'Content-Type': 'application/json',
             'siteid': siteId
           }
-          
+
         });
         console.log(response);
 
-        if (!response.ok) {
-          throw new Error(`Failed to fetch config data: ${response.statusText}`);
-        }
+       if (!response.ok) {
+         throw new Error(`Failed to fetch config data: ${response.statusText}`);
+       }
 
         const { data } = await response.json();
         console.log("raw_data",data);
@@ -201,42 +201,36 @@ export const useConfig = (siteId) => {
         };
         
         console.log(newConfig);
-        
+       setConfigData(newConfig);
+       config = newConfig;
+     } catch (error) {
+       console.error("Error fetching config:", error);
+       setConfigData(defaultConfig);
+     } finally {
+       setLoading(false);
+     }
+   };
 
-        setConfigData(newConfig);
-        config = newConfig; // Update the shared config object
-      } catch (error) {
-        console.error("Error fetching config:", error);
-        setConfigData(defaultConfig);
-      } finally {
-        setLoading(false);
-      }
-    };
+   fetchData();
+ }, [siteId]);
 
-    fetchData();
-  }, [siteId]);
+ const updateConfig = (section, newData) => {
+   if (configData.hasOwnProperty(section)) {
+     const updatedConfig = {
+       ...configData,
+       [section]: { ...configData[section], ...newData }
+     };
+     setConfigData(updatedConfig);
+     config = updatedConfig;
+     return true;
+   }
+   return false;
+ };
 
-  const updateConfig = (section, newData) => {
-    if (configData.hasOwnProperty(section)) {
-      const updatedConfig = {
-        ...configData,
-        [section]: { ...configData[section], ...newData }
-      };
-      setConfigData(updatedConfig);
-      config = updatedConfig; // Update the shared config object
-      return true;
-    }
-    return false;
-  };
-
-  return { config: configData, loading, updateConfig };
-
+ return { config: configData, loading, updateConfig };
 };
 
-// Helper functions
 const getConfig = () => config;
-
-
 
 export {
   getConfig,
@@ -244,3 +238,4 @@ export {
 };
 
 export default config;
+

@@ -43,6 +43,8 @@ function App() {
               ctaConfig={config.ctaConfig}
               tailorConfig={config.tailorConfig}
               offerConfig={config.offerConfig}
+
+              // ctaConfig={config.ctaConfig.ctaConfig}
             />
           }
         />
