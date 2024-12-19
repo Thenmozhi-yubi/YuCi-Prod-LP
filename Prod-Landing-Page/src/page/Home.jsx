@@ -44,8 +44,8 @@ const Home = ({
       <Articles articles={articles} />
       <Tailor1 tailorConfig={tailorConfig}/>
       <div className="flex flex-col">
-        <div className="-mb-40"><Cta ctaConfig={ctaConfig}/></div>
-        <div><Footer footerConfig={footerConfig} /></div>
+        {/* <div className="-mb-40"><Cta ctaConfig={ctaConfig}/></div> */}
+        <div><Footer  /></div>
       
       
       </div>
