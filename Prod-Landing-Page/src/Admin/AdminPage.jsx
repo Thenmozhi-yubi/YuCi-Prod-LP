@@ -96,6 +96,15 @@ const AdminPage = () => {
           <h3 className="text-lg font-medium">offer</h3>
           <p className="text-sm text-gray-600">Configure the offer section.</p>
         </div>
+
+         {/* testimonial Card */}
+         <div
+          className="bg-gray-100 border rounded-md shadow-md p-4 cursor-pointer hover:shadow-lg"
+          onClick={() => navigate("/admin/testimonial")}
+        >
+          <h3 className="text-lg font-medium">testimonial</h3>
+          <p className="text-sm text-gray-600">Configure the testimonial section.</p>
+        </div>
       </div>
     </div>
   );

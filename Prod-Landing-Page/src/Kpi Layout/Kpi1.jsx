@@ -3,7 +3,7 @@ import KpiCounter from "../components/KpiCounter";
 
 const Kpi1 = ({ heading = {}, kpis = [] }) => {
   return (
-    <div className="p-8 bg-[#ffffff] py-20 rounded-xl border-primary shadow-[0_4px_15px_rgba(253,113,73,0.5)]">
+    <div className="p-8 bg-[#ffffff] py-20 rounded-xl ">
       <div className="text-center mb-8 max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
           {heading.title || "Default Title"}

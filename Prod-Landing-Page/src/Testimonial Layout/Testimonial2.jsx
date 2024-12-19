@@ -57,6 +57,9 @@ const Testimonial2 = ({ testimonialConfig: initialConfig = {} }) => {
             key={index}
             className="relative bg-white rounded-xl shadow-md border border-slate-100 p-8 transition-all duration-300 hover:shadow-xl"
           >
+             <div>
+                    <img src="https://media.licdn.com/dms/image/v2/D4D0BAQEt4HK6B5ewww/company-logo_200_200/company-logo_200_200/0/1710832365066/go_yubi_logo?e=2147483647&v=beta&t=ksWMGcFFSbz8XOwtp7fWT3KfhbS2n7m4zzDNx5t_UZ4" alt="" className="w-10 h-10 mb-7" />
+                </div>
             {/* Testimonial Description */}
             <p className="text-content text-lg leading-relaxed mb-8">
               "{testimonial.description}"
@@ -64,6 +67,7 @@ const Testimonial2 = ({ testimonialConfig: initialConfig = {} }) => {
 
             {/* User Info */}
             <div className="flex items-center">
+               
               <div className="w-16 h-16 rounded-full border-2 border-blue-100 overflow-hidden mr-4">
                 <img
                   src={testimonial.image}

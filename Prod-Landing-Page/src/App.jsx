@@ -12,6 +12,7 @@ import ArticlesUpdate from "./Admin/ArticlesUpdate";
 import FooterUpdate from "./Admin/FooterUpdate";
 import CtaUpdate from "./Admin/CtaUpdate";
 import { useConfig } from './config';
+import TestimonialUpdate from "./Admin/TestimonialUpdate";
 
 function App() {
   const siteId = '690718';
@@ -130,6 +131,15 @@ function App() {
             <CtaUpdate 
               ctaConfig={config.ctaConfig} 
               setCtaConfig={(newConfig) => updateConfig({ ...config, ctaConfig: newConfig })} 
+            />
+          }
+        />
+        <Route
+          path="/admin/testimonial"
+          element={
+            <TestimonialUpdate 
+              ctaConfig={config.ctaConfig} 
+              setCtaConfig={(newConfig) => updateConfig({ ...config, testimonialConfig: newConfig })} 
             />
           }
         />
