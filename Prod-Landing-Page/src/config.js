@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { BASE_URL } from "./Constant";
+import { BarChart2, Bot, FileText, LineChart, PieChart } from 'lucide-react';
 
 const defaultConfig = {
+
   navConfig: {
     logo: "",
     useCases: [],
@@ -60,11 +62,45 @@ const defaultConfig = {
     },
     image: "",
   },
+  offerConfig: {
+    heading: "What Do We Offer?",
+    cards: [
+      {
+        icon: BarChart2,
+        title: "Comprehensive Call Scoring",
+        content:
+          "Call centre analytics platform that leverages conversational intelligence (CI) and advanced AI technologies to boost customer satisfaction",
+      },
+      {
+        icon: Bot,
+        title: "AI-Powered Conversational Intelligence",
+        content:
+          "Call centre analytics platform that leverages conversational intelligence (CI) and advanced AI technologies to boost customer satisfaction",
+      },
+      {
+        icon: FileText,
+        title: "Smart Call Summarization",
+        content:
+          "Call centre analytics platform that leverages conversational intelligence (CI) and advanced AI technologies to boost customer satisfaction",
+      },
+      {
+        icon: LineChart,
+        title: "Agent Performance Monitoring",
+        content:
+          "Call centre analytics platform that leverages conversational intelligence (CI) and advanced AI technologies to boost customer satisfaction",
+      },
+      {
+        icon: PieChart,
+        title: "Paradigm-Shifting Insights",
+        content:
+          "Call centre analytics platform that leverages conversational intelligence (CI) and advanced AI technologies to boost customer satisfaction",
+      },
+    ],
+  },
   tailorConfig: {
     heading:{
       title: "Tailor-Made Intelligence for Every Industry",
       subtitle:"Adapts to the unique needs of every sector, delivering actionable insights & boosting efficiency across industries",
-      // spann:"trust"
     },
     cards: [
       {
@@ -89,13 +125,13 @@ const defaultConfig = {
       },
     ],
   }
+
 };
 
-// Single config object
 let config = { ...defaultConfig };
 
-// Custom hook for config data
 export const useConfig = (siteId) => {
+
   const [configData, setConfigData] = useState(config);
   const [loading, setLoading] = useState(true);
 
@@ -108,11 +144,13 @@ export const useConfig = (siteId) => {
             'Content-Type': 'application/json',
             'siteid': siteId
           }
-        });
 
-        if (!response.ok) {
-          throw new Error(`Failed to fetch config data: ${response.statusText}`);
-        }
+        });
+        console.log(response);
+
+       if (!response.ok) {
+         throw new Error(`Failed to fetch config data: ${response.statusText}`);
+       }
 
         const { data } = await response.json();
         console.log("raw_data",data);
@@ -158,45 +196,41 @@ export const useConfig = (siteId) => {
           articlesConfig: data.articleConfig || defaultConfig.articlesConfig,  // Direct mapping
           footerConfig: data.footerConfig || defaultConfig.footerConfig,  // Direct mapping as structure matches
           ctaConfig: data.ctaConfig || defaultConfig.ctaConfig,  // Remove ctaConfig nesting
-          tailorConfig:data.tailorConfig || defaultConfig.tailorConfig
+          tailorConfig:data.tailorConfig || defaultConfig.tailorConfig,
+          offerConfig:data.offerConfig || defaultConfig.offerConfig
         };
         
         console.log(newConfig);
-        
+       setConfigData(newConfig);
+       config = newConfig;
+     } catch (error) {
+       console.error("Error fetching config:", error);
+       setConfigData(defaultConfig);
+     } finally {
+       setLoading(false);
+     }
+   };
 
-        setConfigData(newConfig);
-        config = newConfig; // Update the shared config object
-      } catch (error) {
-        console.error("Error fetching config:", error);
-        setConfigData(defaultConfig);
-      } finally {
-        setLoading(false);
-      }
-    };
+   fetchData();
+ }, [siteId]);
 
-    fetchData();
-  }, [siteId]);
+ const updateConfig = (section, newData) => {
+   if (configData.hasOwnProperty(section)) {
+     const updatedConfig = {
+       ...configData,
+       [section]: { ...configData[section], ...newData }
+     };
+     setConfigData(updatedConfig);
+     config = updatedConfig;
+     return true;
+   }
+   return false;
+ };
 
-  const updateConfig = (section, newData) => {
-    if (configData.hasOwnProperty(section)) {
-      const updatedConfig = {
-        ...configData,
-        [section]: { ...configData[section], ...newData }
-      };
-      setConfigData(updatedConfig);
-      config = updatedConfig; // Update the shared config object
-      return true;
-    }
-    return false;
-  };
-
-  return { config: configData, loading, updateConfig };
+ return { config: configData, loading, updateConfig };
 };
 
-// Helper functions
 const getConfig = () => config;
-
-
 
 export {
   getConfig,
@@ -204,3 +238,4 @@ export {
 };
 
 export default config;
+

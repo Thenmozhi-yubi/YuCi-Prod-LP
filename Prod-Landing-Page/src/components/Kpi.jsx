@@ -7,14 +7,18 @@ const Kpi = ({ kpiConfig }) => {
   const safeKpiConfig = kpiConfig || {};
   
   // Get the selected kpi from config, default to 'kpi1' if not specified
-  const selectedKpi = safeKpiConfig.selectedKpi || 'kpi2';
+
+  const selectedKpi = safeKpiConfig.selectedKpi || '1';
+
 
   // Function to render the selected kpi component
   const renderKpiComponent = () => {
     switch (selectedKpi.toLowerCase()) {
+
       case '2':
         return <Kpi2 heading={safeKpiConfig.heading} kpis={safeKpiConfig.kpis} />;
       case '1':
+
       default:
         return <Kpi1 heading={safeKpiConfig.heading} kpis={safeKpiConfig.kpis} />;
     }

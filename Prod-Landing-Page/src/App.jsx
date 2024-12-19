@@ -15,7 +15,8 @@ import { useConfig } from './config';
 import TestimonialUpdate from "./Admin/TestimonialUpdate";
 
 function App() {
-  const siteId = '690718';
+  const siteId = '536479';
+
   const { config, loading, updateConfig } = useConfig(siteId);
 
   if (loading) {
@@ -31,23 +32,27 @@ function App() {
             <Home
               navConfig={config.navConfig}
               heroConfig={config.heroConfig
-                
               }
               featureConfig={config.featureConfig}
               kpiConfig={config.kpiConfig}
               videoConfig={config.videoConfig}
               trustConfig={config.trustConfig}
-              articles={config.articlesConfig.articles || []}
+
+              articles={config.articlesConfig || []}
+
               footerConfig={config.footerConfig}
               ctaConfig={config.ctaConfig}
               tailorConfig={config.tailorConfig}
+              offerConfig={config.offerConfig}
+
+              // ctaConfig={config.ctaConfig.ctaConfig}
             />
           }
         />
         <Route
           path="/admin"
           element={
-            <AdminPage 
+            <AdminPage
               navConfig={config.navConfig} 
               setNavConfig={(newConfig) => updateConfig({ ...config, navConfig: newConfig })} 
             />
@@ -116,15 +121,7 @@ function App() {
             />
           }
         />
-        <Route
-          path="/admin/footer"
-          element={
-            <FooterUpdate 
-              footerConfig={config.footerConfig} 
-              setFooterConfig={(newConfig) => updateConfig({ ...config, footerConfig: newConfig })} 
-            />
-          }
-        />
+        
         <Route
           path="/admin/cta"
           element={

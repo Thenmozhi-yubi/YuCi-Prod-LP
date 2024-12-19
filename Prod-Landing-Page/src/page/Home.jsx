@@ -8,10 +8,14 @@ import Trust from "../components/Trust";
 import Articles from "../components/Articles";
 import Footer from "../components/Footer";
 import Cta from "../components/Cta";
-import Offer1 from "../Tailor Layout/Tailor1";
 import Tailor1 from "../Tailor Layout/Tailor1";
+
+import Offer from "../components/Offer";
+import Tailor from "../components/Tailor";
+
 import Testimonial1 from "../Testimonial Layout/Testimonial1";
 import Testimonial2 from "../Testimonial Layout/Testimonial2";
+
 
 const Home = ({
   heroConfig,
@@ -24,10 +28,16 @@ const Home = ({
   footerConfig,
   ctaConfig,
   tailorConfig,
+
+  offerConfig,
+
   testimonialConfig,
+
 }) => {
 
-  console.log("wdw",ctaConfig);
+
+  console.log("wdw",kpiConfig);
+
   
   return (
     <div>
@@ -38,16 +48,19 @@ const Home = ({
       <Hero
        heroConfig={heroConfig} 
       />
-      <Testimonial2 testimonialConfig={testimonialConfig}/>
+
+      <Offer offerConfig={offerConfig}/>
+      <Tailor tailorConfig={tailorConfig}/>
       <Feature featureConfig={featureConfig} />
-      <Kpi kpiConfig={kpiConfig} />
+      <Kpi kpiConfig={kpiConfig} />  
       <VideoSection videoConfig={videoConfig} />
       <Trust trustConfig={trustConfig} />
       <Articles articles={articles} />
-      <Tailor1 tailorConfig={tailorConfig}/>
       <div className="flex flex-col">
         {/* <div className="-mb-40"><Cta ctaConfig={ctaConfig}/></div> */}
-        <div><Footer footerConfig={footerConfig} /></div>
+
+        <div><Footer  /></div>
+
       
       
       </div>
