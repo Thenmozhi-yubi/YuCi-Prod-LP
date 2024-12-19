@@ -49,7 +49,7 @@ function App() {
         <Route
           path="/admin"
           element={
-            <AdminPage 
+            <AdminPage
               navConfig={config.navConfig} 
               setNavConfig={(newConfig) => updateConfig({ ...config, navConfig: newConfig })} 
             />
