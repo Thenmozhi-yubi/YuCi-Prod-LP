@@ -20,7 +20,10 @@ export default {
         heading: "#030a17",    // Heading text color
         content: "#586170",
         primary2: "#03142D",    // Primary color
-        secondary2: "#5877A2", 
+        secondary2: "#5877A2",
+        accent2:"#DCDC5B",
+        white:"#ffffff" ,
+        black:"#000000"
            
       },
       

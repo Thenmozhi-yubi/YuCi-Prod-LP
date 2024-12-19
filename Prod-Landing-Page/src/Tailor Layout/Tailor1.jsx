@@ -70,7 +70,9 @@ const Tailor1 = ({ tailorConfig = {} }) => {
       </div>
 
       {/* Button with Interactive Animation */}
-      {/* <motion.div 
+
+      <motion.div 
+
         className="my-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -91,7 +93,9 @@ const Tailor1 = ({ tailorConfig = {} }) => {
         ) : (
           <p>No button text available</p>
         )}
+
       </motion.div> */}
+
     </div>
   )
 }
