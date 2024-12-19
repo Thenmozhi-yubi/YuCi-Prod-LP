@@ -9,16 +9,14 @@ const defaultCtaConfig = {
     text: "Learn More",
     link: "#"
   },
-  image: "/api/placeholder/600/400"
+  image: "https://img.freepik.com/free-photo/front-view-smiley-woman-writing-something-down-while-talking-headset_23-2148434722.jpg?ga=GA1.1.2008338300.1734508029&semt=ais_hybrid"
 };
 
-const Cta = ({ ctaConfig = defaultCtaConfig }) => {
-  const { 
-    heading, 
-    content, 
-    button = defaultCtaConfig.button, 
-    image 
-  } = { ...defaultCtaConfig, ...ctaConfig };
+const Cta = ({ ctaConfig  }) => {
+
+  // Ensure button is defined
+  const { heading, content, button = {}, image } = ctaConfig?.ctaConfig;
+  const { text, link } = button;
 
   return (
     <section className="py-20 bg-gray-50">
@@ -36,7 +34,8 @@ const Cta = ({ ctaConfig = defaultCtaConfig }) => {
             </p>
             
             {/* Animated Button */}
-            <motion.button
+            <motion.a
+              href={link}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-block relative px-8 py-3 text-sm md:text-base rounded-lg text-white bg-secondary hover:bg-opacity-90 transition-colors"
@@ -53,7 +52,7 @@ const Cta = ({ ctaConfig = defaultCtaConfig }) => {
                   whileHover={{ x: -10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {button.text}
+                  {text}
                 </motion.span>
                 
                 <motion.span
@@ -64,7 +63,7 @@ const Cta = ({ ctaConfig = defaultCtaConfig }) => {
                   <FaArrowRight className="w-5 h-5" />
                 </motion.span>
               </motion.div>
-            </motion.button>
+            </motion.a>
           </div>
           
           {/* Image Section */}

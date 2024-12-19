@@ -14,9 +14,11 @@ import CtaUpdate from "./Admin/CtaUpdate";
 import { useConfig } from './config';
 
 function App() {
-  const siteId = '536479';
+
 
   const siteId = '536479';
+
+
   const { config, loading, updateConfig } = useConfig(siteId);
 
   if (loading) {
@@ -38,9 +40,12 @@ function App() {
               kpiConfig={config.kpiConfig}
               videoConfig={config.videoConfig}
               trustConfig={config.trustConfig}
+
               articles={config.articlesConfig || []}
+
               footerConfig={config.footerConfig}
               ctaConfig={config.ctaConfig}
+              tailorConfig={config.tailorConfig}
             />
           }
         />

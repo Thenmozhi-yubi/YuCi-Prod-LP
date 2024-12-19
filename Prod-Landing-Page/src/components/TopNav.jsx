@@ -19,8 +19,8 @@ const TopNav = ({ config }) => {
       <div className="container max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center flex-shrink-0">
-          <img src={logo} alt="Logo" className="w-auto h-12 sm:h-14 md:h-16 lg:h-20" />
-        </div>
+  <img src={logo} alt="Logo" className="w-auto h-6 sm:h-8 md:h-10 lg:h-12" />
+</div>
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center space-x-4 lg:space-x-9">

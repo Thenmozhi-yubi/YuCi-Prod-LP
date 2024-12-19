@@ -24,7 +24,9 @@ const Home = ({
   tailorConfig,
 }) => {
 
+
   console.log("wdw",kpiConfig);
+
   
   return (
     <div>
