@@ -8,7 +8,7 @@ const Kpi = ({ kpiConfig }) => {
   
   // Get the selected kpi from config, default to 'kpi1' if not specified
 
-  const selectedKpi = safeKpiConfig.selectedKpi || 'kpi2';
+  const selectedKpi = safeKpiConfig.selectedKpi || '2';
 
 
   // Function to render the selected kpi component

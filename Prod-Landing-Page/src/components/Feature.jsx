@@ -102,13 +102,11 @@ console.log(selectedHero , 'ccbdhbjdbvfjrbvfbr')
       case '1':
         return <Features2
         featureConfig={safefeatureConfig}
-        
         />;
       case '2':
       default:
-        return <Feature1 
+        return <Feature1
           featureConfig={safefeatureConfig}
-    
         />;
     }
   };

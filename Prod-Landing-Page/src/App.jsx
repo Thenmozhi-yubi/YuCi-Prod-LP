@@ -15,10 +15,7 @@ import { useConfig } from './config';
 
 function App() {
 
-
-  const siteId = '536479';
-
-
+  const siteId = '948129';
   const { config, loading, updateConfig } = useConfig(siteId);
 
   if (loading) {
@@ -34,7 +31,6 @@ function App() {
             <Home
               navConfig={config.navConfig}
               heroConfig={config.heroConfig
-                
               }
               featureConfig={config.featureConfig}
               kpiConfig={config.kpiConfig}
@@ -46,6 +42,7 @@ function App() {
               footerConfig={config.footerConfig}
               ctaConfig={config.ctaConfig}
               tailorConfig={config.tailorConfig}
+              offerConfig={config.offerConfig}
             />
           }
         />

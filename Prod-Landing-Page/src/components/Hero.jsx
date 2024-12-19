@@ -8,8 +8,8 @@ const Hero = ({ heroConfig }) => {
 
   console.log(JSON.stringify(safeHeroConfig) + 'hero')
   // Get the selected hero from config, default to 'hero1' if not specified
-  const selectedHero = safeHeroConfig.selectedHero || '1';
-console.log(selectedHero , 'ccbdhbjdbvfjrbvfbr')
+  const selectedHero = safeHeroConfig.selectedHero || '2';
+console.log("Hero:",selectedHero)
   // Function to render the selected hero component
   const renderHeroComponent = () => {
     switch (selectedHero) {

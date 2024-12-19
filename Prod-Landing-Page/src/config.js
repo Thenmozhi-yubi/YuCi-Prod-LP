@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BASE_URL } from "./Constant";
+import { BarChart2, Bot, FileText, LineChart, PieChart } from 'lucide-react';
 
 const defaultConfig = {
 
@@ -61,6 +62,41 @@ const defaultConfig = {
     },
     image: "",
   },
+  offerConfig: {
+    heading: "What Do We Offer?",
+    cards: [
+      {
+        icon: BarChart2,
+        title: "Comprehensive Call Scoring",
+        content:
+          "Call centre analytics platform that leverages conversational intelligence (CI) and advanced AI technologies to boost customer satisfaction",
+      },
+      {
+        icon: Bot,
+        title: "AI-Powered Conversational Intelligence",
+        content:
+          "Call centre analytics platform that leverages conversational intelligence (CI) and advanced AI technologies to boost customer satisfaction",
+      },
+      {
+        icon: FileText,
+        title: "Smart Call Summarization",
+        content:
+          "Call centre analytics platform that leverages conversational intelligence (CI) and advanced AI technologies to boost customer satisfaction",
+      },
+      {
+        icon: LineChart,
+        title: "Agent Performance Monitoring",
+        content:
+          "Call centre analytics platform that leverages conversational intelligence (CI) and advanced AI technologies to boost customer satisfaction",
+      },
+      {
+        icon: PieChart,
+        title: "Paradigm-Shifting Insights",
+        content:
+          "Call centre analytics platform that leverages conversational intelligence (CI) and advanced AI technologies to boost customer satisfaction",
+      },
+    ],
+  },
   tailorConfig: {
     heading:{
       title: "Tailor-Made Intelligence for Every Industry",
@@ -109,7 +145,9 @@ export const useConfig = (siteId) => {
             'Content-Type': 'application/json',
             'siteid': siteId
           }
+          
         });
+        console.log(response);
 
         if (!response.ok) {
           throw new Error(`Failed to fetch config data: ${response.statusText}`);
@@ -159,7 +197,8 @@ export const useConfig = (siteId) => {
           articlesConfig: data.articleConfig || defaultConfig.articlesConfig,  // Direct mapping
           footerConfig: data.footerConfig || defaultConfig.footerConfig,  // Direct mapping as structure matches
           ctaConfig: data.ctaConfig || defaultConfig.ctaConfig,  // Remove ctaConfig nesting
-          tailorConfig:data.tailorConfig || defaultConfig.tailorConfig
+          tailorConfig:data.tailorConfig || defaultConfig.tailorConfig,
+          offerConfig:data.offerConfig || defaultConfig.offerConfig
         };
         
         console.log(newConfig);
