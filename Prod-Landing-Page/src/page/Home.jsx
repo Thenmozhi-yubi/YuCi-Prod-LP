@@ -8,10 +8,13 @@ import Trust from "../components/Trust";
 import Articles from "../components/Articles";
 import Footer from "../components/Footer";
 import Cta from "../components/Cta";
-import Offer1 from "../Tailor Layout/Tailor1";
 import Tailor1 from "../Tailor Layout/Tailor1";
+
+import Offer from "../components/Offer";
+
 import Testimonial1 from "../Testimonial Layout/Testimonial1";
 import Testimonial2 from "../Testimonial Layout/Testimonial2";
+
 
 const Home = ({
   heroConfig,
@@ -24,7 +27,11 @@ const Home = ({
   footerConfig,
   ctaConfig,
   tailorConfig,
+
+  offerConfig,
+
   testimonialConfig,
+
 }) => {
 
 
@@ -40,7 +47,11 @@ const Home = ({
       <Hero
        heroConfig={heroConfig} 
       />
+
+      <Offer offerConfig={offerConfig}/>
+
       <Testimonial2 testimonialConfig={testimonialConfig}/>
+
       <Feature featureConfig={featureConfig} />
       <Kpi kpiConfig={kpiConfig} />  
       <VideoSection videoConfig={videoConfig} />
