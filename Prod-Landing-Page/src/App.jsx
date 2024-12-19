@@ -14,7 +14,7 @@ import CtaUpdate from "./Admin/CtaUpdate";
 import { useConfig } from './config';
 
 function App() {
-  const siteId = '948129';
+  const siteId = '536479';
 
   const { config, loading, updateConfig } = useConfig(siteId);
 
